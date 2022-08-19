@@ -10,9 +10,9 @@ class User < ApplicationRecord
   has_many :reviews
 
   # validations
-  validate :first_name, presence: true
-  validate :last_name, presence: true
-  validate :biography, length: { minimum: 6, maximum: 500 }
+  validates :first_name, presence: true
+  validates :last_name, presence: true
+  validates :biography, length: { minimum: 6, maximum: 500 }
 
   # model methods
   def name

@@ -27,9 +27,9 @@ class Activity < ApplicationRecord
   has_many :reviews
 
   # validations
-  validate :name, presence: true
-  validate :description, length: { minimum: 6, maximum: 500 }
-  validate :category, inclusion: CATEGORY
-  validate :restaurant_type, inclusion: RESTAURANT_TYPE
-  validate :park_feature, inclusion: PARK_FEATURE
+  validates :name, presence: true
+  validates :description, length: { minimum: 6, maximum: 500 }
+  validates :category, inclusion: CATEGORY
+  validates :restaurant_type, inclusion: RESTAURANT_TYPE
+  validates :park_feature, inclusion: PARK_FEATURE
 end
