@@ -4,7 +4,7 @@ class Location < ApplicationRecord
   belongs_to :user
 
   # validations
-  validate_presence_of :street
-  validate_presence_of :city
-  validate_presence_of :postcode
+  validates_presence_of :street
+  validates_presence_of :city
+  validates_presence_of :postcode
 end
