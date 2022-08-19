@@ -5,8 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   # associations
+  include Locatable
   has_many :dogs
-  has_one :location
   has_many :reviews
 
   # validations
