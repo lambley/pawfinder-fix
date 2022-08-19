@@ -1,7 +1,6 @@
 class Location < ApplicationRecord
   # associations
-  belongs_to :activity
-  belongs_to :user
+  belongs_to :locatable, polymorphic: true
 
   # validations
   validates_presence_of :street

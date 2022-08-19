@@ -24,8 +24,8 @@ class Activity < ApplicationRecord
   ]
 
   # associations
+  include Locatable
   belongs_to :user
-  has_one :location
   has_many :reviews
 
   # validations
