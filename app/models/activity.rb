@@ -11,14 +11,16 @@ class Activity < ApplicationRecord
     "indian",
     "chinese",
     "fast food",
-    "cafe"
+    "cafe",
+    nil
   ]
 
-  PARK_FEATURES = [
+  PARK_FEATURE = [
     "pond",
     "dog play area",
     "playground",
-    "water fountain"
+    "water fountain",
+    nil
   ]
 
   # associations
