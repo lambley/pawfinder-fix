@@ -1,11 +1,6 @@
 class Dog < ApplicationRecord
-  belongs_to :user
-  validates :name, presence: true
-  validates :breed, inclusion: @breeds
-  validates :colour, inclusion: @colours
-  validates :age, numericality: { only_integer: true, greater_than: 0 }
-  validates :biography, length: { minimum: 10, maximum: 500 }
-  @breeds = [
+  # Constants for column lookup - could be seperate model if needed
+  BREEDS = [
     'Mix',
     'Labrador Retriever',
     'Golder Retriever',
@@ -44,7 +39,7 @@ class Dog < ApplicationRecord
     'Whippet',
     'Scottish Terrier'
   ]
-  @colours = [
+  COLOURS = [
     'brown',
     'red',
     'black',
@@ -57,4 +52,15 @@ class Dog < ApplicationRecord
     'bicolour',
     'tricolour'
   ]
+
+  # associations
+  belongs_to :user
+  has_one :location, through: :user
+
+  # validations
+  validates :name, presence: true
+  validates :breed, inclusion: BREEDS
+  validates :colour, inclusion: COLOURS
+  validates :age, numericality: { only_integer: true, greater_than: 0 }
+  validates :biography, length: { minimum: 10, maximum: 500 }
 end

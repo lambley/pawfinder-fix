@@ -1,5 +1,10 @@
 class Location < ApplicationRecord
-  belongs_to :activity_id
-  belongs_to :user_id
-  belongs_to :post_id
+  # associations
+  belongs_to :activity
+  belongs_to :user
+
+  # validations
+  validate_presence_of :street
+  validate_presence_of :city
+  validate_presence_of :postcode
 end

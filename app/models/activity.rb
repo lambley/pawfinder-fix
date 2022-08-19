@@ -1,18 +1,12 @@
 class Activity < ApplicationRecord
-  belongs_to :user
-  validate :name, presence: true
-  validate :description, length: { minimum: 6, maximum: 500 }
-  validate :category, inclusion: @category
-  validate :restaurant_type, inclusion: @restaurant_types
-  validate :park_feature, inclusion: @park_features
-
-  @category = [
+  # Constants for lookup - could be seperate tables
+  CATEGORY = [
     "restaurant",
     "park",
     "dog bin"
   ]
 
-  @restaurant_types = [
+  RESTAURANT_TYPE = [
     "italian",
     "indian",
     "chinese",
@@ -20,10 +14,22 @@ class Activity < ApplicationRecord
     "cafe"
   ]
 
-  @park_features = [
+  PARK_FEATURES = [
     "pond",
     "dog play area",
     "playground",
     "water fountain"
   ]
+
+  # associations
+  belongs_to :user
+  has_one :location
+  has_many :reviews
+
+  # validations
+  validate :name, presence: true
+  validate :description, length: { minimum: 6, maximum: 500 }
+  validate :category, inclusion: CATEGORY
+  validate :restaurant_type, inclusion: RESTAURANT_TYPE
+  validate :park_feature, inclusion: PARK_FEATURE
 end
