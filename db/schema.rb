@@ -42,12 +42,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_21_204822) do
     t.string "street"
     t.string "city"
     t.string "postcode"
-    t.bigint "activity_id"
-    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["activity_id"], name: "index_locations_on_activity_id"
-    t.index ["user_id"], name: "index_locations_on_user_id"
+    t.string "locatable_type", null: false
+    t.bigint "locatable_id", null: false
+    t.index ["locatable_type", "locatable_id"], name: "index_locations_on_locatable"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -78,8 +77,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_21_204822) do
 
   add_foreign_key "activities", "users"
   add_foreign_key "dogs", "users"
-  add_foreign_key "locations", "activities"
-  add_foreign_key "locations", "users"
   add_foreign_key "reviews", "activities"
   add_foreign_key "reviews", "users"
 end
