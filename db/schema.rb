@@ -74,6 +74,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_21_204823) do
     t.datetime "updated_at", null: false
     t.string "locatable_type", null: false
     t.bigint "locatable_id", null: false
+    t.float "latitude"
+    t.float "longitude"
     t.index ["locatable_type", "locatable_id"], name: "index_locations_on_locatable"
   end
 
