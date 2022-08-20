@@ -9,6 +9,8 @@ gem "rails", "~> 7.0.3", ">= 7.0.3.1"
 # geocoder gem for location model
 gem "geocoder"
 
+gem "faker"
+
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
 
