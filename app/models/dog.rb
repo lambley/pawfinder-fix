@@ -3,8 +3,10 @@ class Dog < ApplicationRecord
   BREEDS = [
     'Mix',
     'Labrador Retriever',
-    'Golder Retriever',
+    'Golden Retriever',
     'German Shepherd',
+    'Staffie',
+    'Border Terrier',
     'Poodle',
     'Bulldog',
     'Beagle',
@@ -24,6 +26,7 @@ class Dog < ApplicationRecord
     'Pomeranian',
     'Border Collie',
     'Pug',
+    'Spaniel',
     'Basset Hound',
     'Mastiff',
     'Chihuahua',
@@ -37,6 +40,16 @@ class Dog < ApplicationRecord
     'St. Bernard',
     'Samoyed',
     'Whippet',
+    'French Bulldog',
+    'Highland Terrier',
+    'Spitz',
+    'Lurcher',
+    'Whippet',
+    'Schnauzer',
+    'Cavapoo',
+    'Cockapoo',
+    'Pomchi',
+    'Poodle',
     'Scottish Terrier'
   ]
   COLOURS = [

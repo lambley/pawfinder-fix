@@ -1,3 +1,7 @@
+require 'csv'
+
+dog_csv = File.read(Rails.root.join('db','csv_seeds', 'dog.csv'))
+
 # USERS
 p "creating users"
 counter = 0
@@ -13,16 +17,19 @@ p "> #{counter} #{'user'.pluralize(counter)} generated"
 
 # DOGS
 p "creating dogs"
+dog_csv_data = CSV.parse(dog_csv, headers: true, encoding: 'ISO-8859-1')
 counter = 0
-d = Dog.create!(
-  name: "Teddy",
-  breed: "Schnauzer",
-  colour: "black",
-  age: 5,
-  biography: "The bestest dog there ever was.",
-  user_id: 1
-)
-counter += 1 if d.persisted?
+dog_csv_data.each do |row|
+  d = Dog.create!(
+    name: row['name'],
+    breed: row['breed'],
+    colour: row['colour'],
+    age: row['age'],
+    biography: row['biography'],
+    user_id: 1
+  )
+  counter += 1 if d.persisted?
+end
 p "> #{counter} #{'dog'.pluralize(counter)} generated"
 
 # ACTIVITIES
