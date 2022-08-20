@@ -16,10 +16,12 @@ class Activity < ApplicationRecord
   ]
 
   PARK_FEATURE = [
+    "football fields",
     "pond",
-    "dog play area",
+    "open fields",
     "playground",
-    "water fountain",
+    "dog park",
+    "garden",
     nil
   ]
 
