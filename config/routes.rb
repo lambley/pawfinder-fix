@@ -6,8 +6,5 @@ Rails.application.routes.draw do
   end
   resources :dogs, only: %i[index show new create]
   resources :activities, only: %i[index new create]
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  # Defines the root path route ("/")
-  # root "articles#index"
+  resources :locations, only %i[index new create]
 end
