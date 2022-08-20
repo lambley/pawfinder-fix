@@ -6,5 +6,5 @@ Rails.application.routes.draw do
   end
   resources :dogs, only: %i[index show new create]
   resources :activities, only: %i[index new create]
-  resources :locations, only %i[index new create]
+  resources :locations, only: %i[index new create]
 end
