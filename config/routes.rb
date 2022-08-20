@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'dog/index'
+  get 'dog/show'
+  get 'dog/new'
+  get 'dog/create'
   get 'activities/index'
   get 'activities/new'
   get 'activities/create'
@@ -8,5 +12,6 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
+  resources :dogs, only: %i[index show new create]
   resoureces :activities, only: %i[index new create]
 end
