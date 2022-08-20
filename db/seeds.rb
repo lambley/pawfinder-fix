@@ -1,6 +1,7 @@
 require 'csv'
 
 dog_csv = File.read(Rails.root.join('db','csv_seeds', 'dog.csv'))
+park_csv = File.read(Rails.root.join('db','csv_seeds', 'park.csv'))
 
 # USERS
 p "creating users"
@@ -13,7 +14,8 @@ u = User.create!(
   password: "123456"
 )
 counter += 1 if u.persisted?
-p "> #{counter} #{'user'.pluralize(counter)} generated"
+p ""
+p ">>> #{counter} #{'user'.pluralize(counter)} generated"
 
 # DOGS
 p "creating dogs"
@@ -29,20 +31,35 @@ dog_csv_data.each do |row|
     user_id: 1
   )
   counter += 1 if d.persisted?
+  print "."
 end
-p "> #{counter} #{'dog'.pluralize(counter)} generated"
+p ""
+p ">>> #{counter} #{'dog'.pluralize(counter)} generated"
 
 # ACTIVITIES
-p "creating activities"
+p ""
+p "creating activities - parks"
 counter = 0
-a = Activity.create!(
-  name: "Hyde Park",
-  description: "A really big park in central London",
-  category: "park",
-  park_feature: "pond",
-  user_id: 1
-)
-counter += 1 if a.persisted?
+park_csv_data = CSV.parse(park_csv, headers: true, encoding: 'ISO-8859-1')
+park_csv_data.each do |row|
+  a = Activity.create!(
+    name: row["name"],
+    description: row["description"],
+    category: row["category"],
+    park_feature: row["park_feature"],
+    user_id: 1
+  )
+  a.location = Location.create(
+    street: row["street"],
+    city: row["city"],
+    postcode: row["postcode"]
+  )
+  counter += 1 if a.persisted?
+  print "."
+end
+
+p ""
+p "creating activities - restaurants"
 a = Activity.create!(
   name: "Starbucks",
   description: "Chain coffee shop near Hyde Park",
@@ -50,15 +67,21 @@ a = Activity.create!(
   restaurant_type: "cafe",
   user_id: 1
 )
+print "."
 counter += 1 if a.persisted?
+
+p ""
+p "creating activities - dog bins"
 a = Activity.create!(
   name: "Dog Bin, Hyde Park",
   description: "A dog bin park in Hyde Park",
   category: "dog bin",
   user_id: 1
 )
+print "."
+p ""
 counter += 1 if a.persisted?
-p "> #{counter} #{'activity'.pluralize(counter)} generated"
+p ">>> #{counter} #{'activity'.pluralize(counter)} generated"
 
 # REVIEWS
 p "creating reviews"
@@ -84,7 +107,7 @@ r = Review.create!(
   activity_id: 3
 )
 counter += 1 if r.persisted?
-p "> #{counter} #{'activity'.pluralize(counter)} generated"
+p ">>> #{counter} #{'activity'.pluralize(counter)} generated"
 
 # Locations - Polymorphic seeding
 # > Create new Location instance first
@@ -105,13 +128,4 @@ User.all.each do |user|
   user.location = l
   counter += 1 if l.persisted? & user.persisted?
 end
-Activity.all.each do |activity|
-  l = Location.create(
-    street: "#{activity.id} Test Avenue",
-    city: "London",
-    postcode: "SW#{activity.id} 2BB"
-  )
-  activity.location = l
-  counter += 1 if l.persisted? & activity.persisted?
-end
-p "> #{counter} #{'location'.pluralize(counter)} generated"
+p ">>> #{counter} #{'location'.pluralize(counter)} generated"
