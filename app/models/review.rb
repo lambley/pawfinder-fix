@@ -1,8 +1,8 @@
 class Review < ApplicationRecord
   # associations
   belongs_to :user
-  belongs_to :location
+  belongs_to :activity
   # validations
-  validates :content, presence: true, lenght: { minimum: 6 }
-  validates :rating, numericality: { only_integer: true }
+  validates :content, presence: true, length: { minimum: 6 }
+  validates :rating, numericality: { only_integer: true, greater_than: 0, less_than_or_equal_to: 10 }
 end
