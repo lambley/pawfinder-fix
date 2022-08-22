@@ -96,15 +96,19 @@ end
 p ""
 
 p "creating activities - dog bins"
-a = Activity.create!(
-  name: "Dog Bin, Hyde Park",
-  description: "A dog bin park in Hyde Park",
-  category: "dog bin",
-  user_id: 1
-)
-print "."
+20.times do
+  random_park = Activity.where(category: "park").sample
+  bin = Activity.create!(
+    name: "Dog Bin, #{random_park}",
+    description: "A dog bin park in #{random_park}",
+    category: "dog bin",
+    user_id: 1
+  )
+  bin.location = random_park.location
+  print "."
+  counter += 1 if bin.persisted?
+end
 p ""
-counter += 1 if a.persisted?
 p ">>> #{counter} #{'activity'.pluralize(counter)} in total generated"
 
 # REVIEWS
