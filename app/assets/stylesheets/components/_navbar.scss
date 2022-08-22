@@ -7,6 +7,20 @@
   flex-grow: 0;
 }
 
-.navbar-sticky .navbar-brand img {
-  width: 40px;
+.navbar-sticky .nav-text{
+  font-size: 20px;
+  padding: .5rem, 0;
+  color: #404347;
+  text-decoration: none;
+  transition: 0.3s;}
+
+a .nav-text{
+  font-size: 20px;
+  padding: .5rem, 0;
+  color: #404347;
+  text-decoration: none;
+  transition: 0.3s;}
+
+.nav-text:hover {
+  color: #7b7f85;
 }
