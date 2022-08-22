@@ -112,27 +112,35 @@ p ""
 p ">>> #{counter} #{'activity'.pluralize(counter)} in total generated"
 
 # REVIEWS
-p "creating reviews"
+p "creating park reviews"
 counter = 0
-r = Review.create!(
-  content: "Amazing park! Very dog friendly!",
-  rating: 9,
-  user_id: 1,
-  activity_id: 1
-)
-counter += 1 if r.persisted?
-r = Review.create!(
-  content: "Average coffee but allows dogs",
-  rating: 5,
-  user_id: 1,
-  activity_id: 2
-)
-counter += 1 if r.persisted?
-r = Review.create!(
-  content: "Convenient dog bin, but often litter is everywhere",
-  rating: 5,
-  user_id: 1,
-  activity_id: 3
-)
-counter += 1 if r.persisted?
+60.times do
+  # park reviews
+  random_park = Activity.where(category: "park").sample
+  park_review = Review.create!(
+    content: "#{random_park} - worth visiting!",
+    rating: rand(1..10),
+    user_id: User.ids.sample,
+    activity_id: random_park.id
+  )
+  counter += 1 if park_review.persisted?
+  # restaurant reviews
+  random_restaurant = Activity.where(category: "restaurant").sample
+  restaurant_review = Review.create!(
+    content: "#{random_restaurant} - interesting menu!",
+    rating: rand(1..10),
+    user_id: User.ids.sample,
+    activity_id: random_restaurant.id
+  )
+  counter += 1 if restaurant_review.persisted?
+  # bin reviews
+  random_bin = Activity.where(category: "restaurant").sample
+  bin_review = Review.create!(
+    content: "#{random_bin} - useful location!",
+    rating: rand(1..10),
+    user_id: User.ids.sample,
+    activity_id: random_bin.id
+  )
+  counter += 1 if bin_review.persisted?
+end
 p ">>> #{counter} #{'review'.pluralize(counter)} generated"
