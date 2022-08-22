@@ -1,19 +1,21 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-sticky">
   <div class="container-fluid">
     <%= link_to "#", class: "nav-text" do %>
-      <%= cl_image_tag("logo_ivnspw", width: 80) %>Home
+      <%= cl_image_tag("https://res.cloudinary.com/dzobkrns3/image/upload/v1661172670/output-onlinepngtools_aleqvh.png", width: 80) %>Home
     <% end %>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>
-          <li>
+          <li class= "nav-item">
             <%= link_to locations_path, class: "nav-text" do %>
-              <i class="fa-solid fa-plus"></i>Add Location
+              <span><p class="fa-solid fa-plus"></p>Add Location</span>
             <% end %>
           </li>
-          <li class="nav-item active">
-              <h4>Hello, <%= current_user.first_name.capitalize %></h4>
+          <li class= "nav-item">
+            <%= link_to locations_path, class: "nav-text" do %>
+              <span>Hello, <%= current_user.first_name.capitalize %></span>
+            <% end %>
           </li>
           <li class="nav-item dropdown">
             <%= cl_image_tag("dog-solid_wiclnh", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false) %>
@@ -25,7 +27,7 @@
             </div>
           </li>
           <li class="nav-item">
-            <%= link_to "Messages", "#", class: "nav-link" %>
+            <%= link_to "Messages", "#", class: "nav-text" %>
           </li>
         <% else %>
           <li class="nav-item">
