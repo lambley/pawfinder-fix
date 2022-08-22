@@ -7,11 +7,22 @@ class Activity < ApplicationRecord
   ]
 
   RESTAURANT_TYPE = [
+    "barbecue",
+    "british",
+    "gastropub",
+    "asian",
+    "peruvian",
     "italian",
-    "indian",
-    "chinese",
-    "fast food",
-    "cafe",
+    "pizza",
+    "american",
+    "mediterranean",
+    "european",
+    "turkish",
+    "mexican",
+    "seafood",
+    "jamaican",
+    "deli",
+    "sushi",
     nil
   ]
 

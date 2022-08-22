@@ -3,6 +3,7 @@ require 'csv'
 dog_csv = File.read(Rails.root.join('db','csv_seeds', 'dog.csv'))
 park_csv = File.read(Rails.root.join('db','csv_seeds', 'park.csv'))
 user_csv = File.read(Rails.root.join('db', 'csv_seeds', 'user.csv'))
+restaurant_csv = File.read(Rails.root.join('db', 'csv_seeds', 'restaurant.csv'))
 
 # USERS
 p "creating users"
@@ -52,35 +53,48 @@ p "creating activities - parks"
 counter = 0
 park_csv_data = CSV.parse(park_csv, headers: true, encoding: 'ISO-8859-1')
 park_csv_data.each do |row|
-  a = Activity.create!(
+  park = Activity.create!(
     name: row["name"],
     description: row["description"],
     category: row["category"],
     park_feature: row["park_feature"],
     user_id: 1
   )
-  a.location = Location.create(
+  park.location = Location.create(
     street: row["street"],
     city: row["city"],
     postcode: row["postcode"]
   )
-  counter += 1 if a.persisted?
+  counter += 1 if park.persisted?
   print "."
 end
-
 p ""
+
 p "creating activities - restaurants"
-a = Activity.create!(
-  name: "Starbucks",
-  description: "Chain coffee shop near Hyde Park",
-  category: "restaurant",
-  restaurant_type: "cafe",
-  user_id: 1
-)
-print "."
-counter += 1 if a.persisted?
-
+restaurant_csv_data = CSV.parse(restaurant_csv, headers: true, encoding: 'ISO-8859-1')
+restaurant_csv_data.each do |row|
+  restaurant = Activity.create!(
+    name: row['name'],
+    description: row['description'],
+    category: row['category'],
+    restaurant_type: row['restaurant_type'],
+    user_id: 1
+  )
+  # error handle failed location creation
+  begin
+    restaurant.location = Location.create(
+      street: row["street"],
+      city: row["city"],
+      postcode: row["postcode"]
+    )
+  ensure
+    restaurant.location = Location.all.sample unless restaurant.location.present?
+    print "."
+  end
+  counter += 1 if restaurant.persisted?
+end
 p ""
+
 p "creating activities - dog bins"
 a = Activity.create!(
   name: "Dog Bin, Hyde Park",
@@ -91,7 +105,7 @@ a = Activity.create!(
 print "."
 p ""
 counter += 1 if a.persisted?
-p ">>> #{counter} #{'activity'.pluralize(counter)} generated"
+p ">>> #{counter} #{'activity'.pluralize(counter)} in total generated"
 
 # REVIEWS
 p "creating reviews"
@@ -117,4 +131,4 @@ r = Review.create!(
   activity_id: 3
 )
 counter += 1 if r.persisted?
-p ">>> #{counter} #{'activity'.pluralize(counter)} generated"
+p ">>> #{counter} #{'review'.pluralize(counter)} generated"
