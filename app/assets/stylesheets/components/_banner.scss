@@ -9,35 +9,22 @@
   // object-fit: cover;
   background-size:cover;
   height:100vh;
+}
 
-  h1 {
-    // position: absolute;
-    // width: 580px;
-    // height: 116px;
-    // left: 415px;
-    // top: 240px;
-    position:absolute;
-    top:20%;
-    left: 30%;
-    text-align:center;
-    -ms-transform: translate(0,-50%); /* IE 9 */
-    -webkit-transform: translate(0,-50%); /* Safari */
-    transform: translate(0,-50%);
+.banner-heading {
+  padding-bottom: 140px;
 
-    /* H1 */
+  position:absolute;
+  top:25%;
+  left: 30%;
+  right: 30%;
+  text-align:center;
 
-    font-family: $headers-font;
-    font-style: normal;
-    font-weight: 700;
-    font-size: 40px;
-    line-height: 51px;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    text-transform: capitalize;
+  /* H1 */
 
-    /* White */
+  font-family: $headers-font;
 
-    color: #FFFFFF;
-  }
+  /* White */
+
+  color: #FFFFFF;
 }
