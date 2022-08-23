@@ -1,19 +1,28 @@
 .banner {
   background-image: url("https://4pawsins.com/wp-content/uploads/2017/02/FAQs-short-banner.jpg");
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  left: 0px;
-  top: 80px;
-  display: block;
-  object-fit: cover;
+  position: relative;
+  // width: 100%;
+  // height: 100%;
+  // left: 0px;
+  // top: 80px;
+  // display: block;
+  // object-fit: cover;
+  background-size:cover;
+  height:100vh;
 
   h1 {
-    position: absolute;
-    width: 580px;
-    height: 116px;
-    left: 415px;
-    top: 240px;
+    // position: absolute;
+    // width: 580px;
+    // height: 116px;
+    // left: 415px;
+    // top: 240px;
+    position:absolute;
+    top:20%;
+    left: 30%;
+    text-align:center;
+    -ms-transform: translate(0,-50%); /* IE 9 */
+    -webkit-transform: translate(0,-50%); /* Safari */
+    transform: translate(0,-50%);
 
     /* H1 */
 
