@@ -71,7 +71,7 @@ gem 'bootstrap', '~> 5.2.0'
 gem "dotenv-rails", groups: [:development, :test]
 
 #Add cloudinary
-gem "cloudinary"
+gem 'cloudinary', '~> 1.23.0'
 
 end
 
