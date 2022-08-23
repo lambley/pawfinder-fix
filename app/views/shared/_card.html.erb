@@ -1,10 +1,11 @@
 <% activities.each do |activity| %>
   <% if activity.category == 'restaurant' %>
+
     <div class="container">
       <div class="card mb-3" style="max-width: 540px;">
         <div class="row g-0">
           <div class="col-md-4">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/1/12/Black_Paw.svg" width="150px" heighth="150px" class="img-fluid rounded-start" alt="activity card photo">
+            <img src="https://www.svgrepo.com/show/58017/restaurant-symbol-of-cutlery-in-a-circle.svg" width="150px" heighth="150px" class="img-fluid rounded-start" alt="activity card photo">
           </div>
           <div class="col-md-8">
               <div class="card-body">
@@ -16,5 +17,40 @@
         </div>
       </div>
     </div>
+
+
+  <% elsif activity.category == 'dog bin' %>
+    <div class="container">
+      <div class="card mb-3" style="max-width: 540px;">
+        <div class="row g-0">
+          <div class="col-md-4">
+            <img src="https://www.svgrepo.com/show/287780/garbage-bin.svg" width="150px" heighth="150px" class="img-fluid rounded-start" alt="activity card photo">
+          </div>
+          <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title"><%= activity.name %></h5>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <% else %>
+    <div class="container">
+      <div class="card mb-3" style="max-width: 540px;">
+        <div class="row g-0">
+          <div class="col-md-4">
+            <img src="https://www.svgrepo.com/show/85152/public-park.svg" width="150px" heighth="150px" class="img-fluid rounded-start" alt="activity card photo">
+          </div>
+          <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title"><%= activity.name %></h5>
+                <p class="card-text"><%= activity.park_feature %></p>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
   <% end %>
 <% end %>
