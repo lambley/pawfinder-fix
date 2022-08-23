@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root to: "pages#home"
+  get "/profile", to: "pages#profile"
   devise_for :users
   resources :activities, only: %i[index new create] do
     resources :reviews, only: %i[new create edit update]
