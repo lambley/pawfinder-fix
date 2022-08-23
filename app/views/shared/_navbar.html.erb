@@ -8,7 +8,7 @@
       <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>
           <li class= "nav-item">
-            <%= link_to locations_path, class: "nav-text" do %>
+            <%= link_to new_activity_path, class: "nav-text" do %>
               <span><p class="fa-solid fa-plus"></p>Add Location</span>
             <% end %>
           </li>
