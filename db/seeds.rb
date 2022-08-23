@@ -1,24 +1,37 @@
 require 'csv'
 
 dog_csv = File.read(Rails.root.join('db','csv_seeds', 'dog.csv'))
+park_csv = File.read(Rails.root.join('db','csv_seeds', 'park.csv'))
+user_csv = File.read(Rails.root.join('db', 'csv_seeds', 'user.csv'))
+restaurant_csv = File.read(Rails.root.join('db', 'csv_seeds', 'restaurant.csv'))
 
 # USERS
 p "creating users"
+user_csv_data = CSV.parse(user_csv, headers: true, encoding: 'ISO-8859-1')
 counter = 0
-u = User.create!(
-  first_name: "Bob",
-  last_name: "Ross",
-  biography: "I used to be a painter but now I walk dogs for a living.",
-  email: "bob@ross.com",
-  password: "123456"
-)
-counter += 1 if u.persisted?
-p "> #{counter} #{'user'.pluralize(counter)} generated"
+user_csv_data.each do |row|
+  u = User.create!(
+    first_name: row['first_name'],
+    last_name: row['last_name'],
+    biography: row['biography'],
+    email: Faker::Internet.email,
+    password: "123456"
+  )
+  u.location = Location.create(
+    city: row["city"],
+    postcode: row['city']
+  )
+  counter += 1 if u.persisted?
+  print "."
+end
+p ""
+p ">>> #{counter} #{'user'.pluralize(counter)} generated"
 
 # DOGS
 p "creating dogs"
 dog_csv_data = CSV.parse(dog_csv, headers: true, encoding: 'ISO-8859-1')
 counter = 0
+user_increment = 1
 dog_csv_data.each do |row|
   d = Dog.create!(
     name: row['name'],
@@ -26,92 +39,108 @@ dog_csv_data.each do |row|
     colour: row['colour'],
     age: row['age'],
     biography: row['biography'],
-    user_id: 1
+    user_id: user_increment
   )
   counter += 1 if d.persisted?
+  user_increment += 1
+  print "."
 end
-p "> #{counter} #{'dog'.pluralize(counter)} generated"
+p ""
+p ">>> #{counter} #{'dog'.pluralize(counter)} generated"
 
 # ACTIVITIES
-p "creating activities"
+p "creating activities - parks"
 counter = 0
-a = Activity.create!(
-  name: "Hyde Park",
-  description: "A really big park in central London",
-  category: "park",
-  park_feature: "pond",
-  user_id: 1
-)
-counter += 1 if a.persisted?
-a = Activity.create!(
-  name: "Starbucks",
-  description: "Chain coffee shop near Hyde Park",
-  category: "restaurant",
-  restaurant_type: "cafe",
-  user_id: 1
-)
-counter += 1 if a.persisted?
-a = Activity.create!(
-  name: "Dog Bin, Hyde Park",
-  description: "A dog bin park in Hyde Park",
-  category: "dog bin",
-  user_id: 1
-)
-counter += 1 if a.persisted?
-p "> #{counter} #{'activity'.pluralize(counter)} generated"
+park_csv_data = CSV.parse(park_csv, headers: true, encoding: 'ISO-8859-1')
+park_csv_data.each do |row|
+  park = Activity.create!(
+    name: row["name"],
+    description: row["description"],
+    category: row["category"],
+    park_feature: row["park_feature"],
+    user_id: 1
+  )
+  park.location = Location.create(
+    street: row["street"],
+    city: row["city"],
+    postcode: row["postcode"]
+  )
+  counter += 1 if park.persisted?
+  print "."
+end
+p ""
+
+p "creating activities - restaurants"
+restaurant_csv_data = CSV.parse(restaurant_csv, headers: true, encoding: 'ISO-8859-1')
+restaurant_csv_data.each do |row|
+  restaurant = Activity.create!(
+    name: row['name'],
+    description: row['description'],
+    category: row['category'],
+    restaurant_type: row['restaurant_type'],
+    user_id: 1
+  )
+  # error handle failed location creation
+  begin
+    restaurant.location = Location.create(
+      street: row["street"],
+      city: row["city"],
+      postcode: row["postcode"]
+    )
+  ensure
+    restaurant.location = Location.all.sample unless restaurant.location.present?
+    print "."
+  end
+  counter += 1 if restaurant.persisted?
+end
+p ""
+
+p "creating activities - dog bins"
+20.times do
+  random_park = Activity.where(category: "park").sample
+  bin = Activity.create!(
+    name: "Dog Bin, #{random_park}",
+    description: "A dog bin park in #{random_park}",
+    category: "dog bin",
+    user_id: 1
+  )
+  bin.location = random_park.location
+  print "."
+  counter += 1 if bin.persisted?
+end
+p ""
+p ">>> #{counter} #{'activity'.pluralize(counter)} in total generated"
 
 # REVIEWS
-p "creating reviews"
+p "creating park reviews"
 counter = 0
-r = Review.create!(
-  content: "Amazing park! Very dog friendly!",
-  rating: 9,
-  user_id: 1,
-  activity_id: 1
-)
-counter += 1 if r.persisted?
-r = Review.create!(
-  content: "Average coffee but allows dogs",
-  rating: 5,
-  user_id: 1,
-  activity_id: 2
-)
-counter += 1 if r.persisted?
-r = Review.create!(
-  content: "Convenient dog bin, but often litter is everywhere",
-  rating: 5,
-  user_id: 1,
-  activity_id: 3
-)
-counter += 1 if r.persisted?
-p "> #{counter} #{'activity'.pluralize(counter)} generated"
-
-# Locations - Polymorphic seeding
-# > Create new Location instance first
-# > Then attach to locatable (either User or Activity), like so:
-#     User.first.location = Location.create(
-#       street: "test",
-#       city: "test",
-#       postcode: "test"
-#     )
-p "creating locations"
-counter = 0
-User.all.each do |user|
-  l = Location.create(
-    street: "#{user.id} Test Street",
-    city: "London",
-    postcode: "E#{user.id} 1AA"
+60.times do
+  # park reviews
+  random_park = Activity.where(category: "park").sample
+  park_review = Review.create!(
+    content: "#{random_park} - worth visiting!",
+    rating: rand(1..10),
+    user_id: User.ids.sample,
+    activity_id: random_park.id
   )
-  user.location = l
-  counter += 1 if l.persisted? & user.persisted?
-end
-Activity.all.each do |activity|
-  l = Location.create(
-    street: "#{activity.id} Test Avenue",
-    city: "London",
-    postcode: "SW#{activity.id} 2BB"
+  counter += 1 if park_review.persisted?
+  # restaurant reviews
+  random_restaurant = Activity.where(category: "restaurant").sample
+  restaurant_review = Review.create!(
+    content: "#{random_restaurant} - interesting menu!",
+    rating: rand(1..10),
+    user_id: User.ids.sample,
+    activity_id: random_restaurant.id
   )
-  activity.location = l
-  counter += 1 if l.persisted? & activity.persisted?
+  counter += 1 if restaurant_review.persisted?
+  # bin reviews
+  random_bin = Activity.where(category: "restaurant").sample
+  bin_review = Review.create!(
+    content: "#{random_bin} - useful location!",
+    rating: rand(1..10),
+    user_id: User.ids.sample,
+    activity_id: random_bin.id
+  )
+  counter += 1 if bin_review.persisted?
 end
-p "> #{counter} #{'location'.pluralize(counter)} generated"
+p ">>> #{counter} #{'review'.pluralize(counter)} generated"

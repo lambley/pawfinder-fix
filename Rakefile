@@ -4,3 +4,8 @@
 require_relative "config/application"
 
 Rails.application.load_tasks
+
+namespace :seed do
+  desc "image download for seed"
+  task images: [:environment]
+end
