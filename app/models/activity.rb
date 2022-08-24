@@ -47,4 +47,24 @@ class Activity < ApplicationRecord
   validates :category, inclusion: CATEGORY
   validates :restaurant_type, inclusion: RESTAURANT_TYPE
   validates :park_feature, inclusion: PARK_FEATURE
+
+  def self.categories
+    return CATEGORY.sort
+  end
+
+  def self.locations
+    locations = []
+    Activity.all.each do |activity|
+      locations << activity.location.address unless activity.location.nil?
+    end
+    return locations
+  end
+
+  def self.postcodes
+    postcodes = []
+    Activity.all.each do |activity|
+      postcodes << activity.location.postcode unless activity.location.nil?
+    end
+    return postcodes
+  end
 end
