@@ -7,5 +7,46 @@
   position: absolute;
   right: 30%;
   left: 30%;
-  top: 35%;
+  top: 40%;
+  display: flex;
+}
+
+.search-filter {
+  box-sizing: border-box;
+  border: 1px solid;
+  border-color: #C9CFD4;
+  border-radius: 4px;
+  height: 80px;
+  width: 25%;
+  margin: 8px;
+  padding: 8px;
+  text-align: center;
+  &:focus {
+    box-shadow: 1px 1px 4px 1px rgba(0, 0, 0, 0.25);
+    border: 1px solid #404347;
+  }
+  &:active {
+    box-shadow: 1px 1px 4px 1px rgba(0, 0, 0, 0.25);
+    border: 1px solid #404347;
+  }
+  a {
+    text-decoration: none;
+    color: $black;
+  }
+}
+
+.park-search {
+
+}
+
+.restaurant-search {
+
+}
+
+.bin-search {
+
+}
+
+.dog-search {
+
 }
