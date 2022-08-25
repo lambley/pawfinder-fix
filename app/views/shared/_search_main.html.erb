@@ -1,28 +1,28 @@
-<div class="search-main-container">
-  <div class="search-filters">
-    <div class="park-search search-filter active-search-filter">
-      <%= link_to '#' do %>
-        <i class="fa-solid fa-tree"></i>
-        <p>Parks</p>
-      <% end %>
+<div class="search-main-container" data-controller="home-search">
+  <div class="search-filters" data-home-search-target="filters">
+
+    <%# parks %>
+    <div class="park-search search-filter active-search-filter" data-action="click->home-search#changeActiveFilter" data-home-search-target="filter">
+      <i class="fa-solid fa-tree"></i>
+      <p>Parks</p>
     </div>
-    <div class="restaurant-search search-filter">
-      <%= link_to '#' do %>
-        <i class="fa-solid fa-utensils"></i>
-        <p>Restaurants</p>
-      <% end %>
+
+    <%# restaurants %>
+    <div class="restaurant-search search-filter" data-action="click->home-search#changeActiveFilter" data-home-search-target="filter">
+      <i class="fa-solid fa-utensils"></i>
+      <p>Restaurants</p>
     </div>
-    <div class="bin-search search-filter">
-      <%= link_to '#' do %>
-        <i class="fa-solid fa-trash"></i>
-        <p>Dog bins</p>
-      <% end %>
+
+    <%# bins %>
+    <div class="bin-search search-filter" data-action="click->home-search#changeActiveFilter" data-home-search-target="filter">
+      <i class="fa-solid fa-trash"></i>
+      <p>Dog bins</p>
     </div>
-    <div class="dog-search search-filter">
-      <%= link_to '#' do %>
-        <i class="fa-solid fa-dog"></i>
-        <p>Dogs</p>
-      <% end %>
+
+    <%# dogs %>
+    <div class="dog-search search-filter" data-action="click->home-search#changeActiveFilter" data-home-search-target="filter">
+      <i class="fa-solid fa-dog"></i>
+      <p>Dogs</p>
     </div>
   </div>
   <%= render "pages/shared/park_form" %>
