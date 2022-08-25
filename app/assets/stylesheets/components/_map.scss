@@ -1,0 +1,19 @@
+.map-container {
+  width: 30%;
+  height: 100vh;
+  z-index: -1;
+  padding-left: 8px;
+}
+
+.mapboxgl-popup {
+  max-width: 200px;
+}
+
+.mapboxgl-popup-content {
+  text-align: center;
+  font-family: $body-font;
+}
+
+.mapboxgl-map {
+  position: fixed !important;
+}
