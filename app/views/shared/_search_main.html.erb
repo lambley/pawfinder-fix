@@ -36,12 +36,12 @@
         <%= form.select :location, Activity.postcodes %>
       </div>
   </div>
-      <div class="search-bottom">
-        <div class="search-checkbox">
-          <%= form.check_box :meet_dogs %>
-          <%= form.label :meet_dogs, "want to meet other dogs?" %>
-        </div>
+  <div class="search-bottom">
+    <div class="search-checkbox">
+        <%= form.check_box :meet_dogs %>
+        <%= form.label :meet_dogs, "want to meet other dogs?" %>
+    </div>
         <%= form.submit "Search", class: "search-submit" %>
-      </div>
-    <% end %>
   </div>
+      <% end %>
+</div>
