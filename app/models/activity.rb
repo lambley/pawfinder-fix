@@ -52,6 +52,10 @@ class Activity < ApplicationRecord
     return CATEGORY.sort
   end
 
+  def self.park_features
+    return PARK_FEATURE.sort { |a,b| a <=> b || (b && 1) || -1 }
+  end
+
   def self.locations
     locations = []
     Activity.all.each do |activity|
