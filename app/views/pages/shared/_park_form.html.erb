@@ -1,0 +1,22 @@
+  <!-- dropdowns-->
+  <div class="search-form-container">
+    <%= form_with url:"/", method: :get, class: "search-form" do |form| %>
+      <div class="row search-dropdown">
+        <%= form.label :category, "Select a park feature:"%>
+        <%= form.select :category, Activity.park_features, selected: Activity.park_features.first %>
+      </div>
+      <div class="row search-dropdown">
+        <%= form.label :range, "Within range (km):" %>
+        <%= form.range_field :range, in: 0..20, step: '.1' %>
+      </div>
+  </div>
+  <!-- checkbox-->
+  <div class="search-bottom">
+    <div class="search-checkbox">
+        <%= form.check_box :meet_dogs %>
+        <%= form.label :meet_dogs, "want to meet other dogs?" %>
+    </div>
+  <!-- submit-->
+        <%= form.submit "Search", class: "search-submit" %>
+  </div>
+      <% end %>
