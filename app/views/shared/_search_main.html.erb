@@ -1,0 +1,47 @@
+<div class="search-main-container">
+  <div class="search-filters">
+    <div class="park-search search-filter">
+      <%= link_to '#' do %>
+        <i class="fa-solid fa-tree"></i>
+        <p>Parks</p>
+      <% end %>
+    </div>
+    <div class="restaurant-search search-filter">
+      <%= link_to '#' do %>
+        <i class="fa-solid fa-utensils"></i>
+        <p>Restaurants</p>
+      <% end %>
+    </div>
+    <div class="bin-search search-filter">
+      <%= link_to '#' do %>
+        <i class="fa-solid fa-trash"></i>
+        <p>Dog bins</p>
+      <% end %>
+    </div>
+    <div class="dog-search search-filter">
+      <%= link_to '#' do %>
+        <i class="fa-solid fa-dog"></i>
+        <p>Dogs</p>
+      <% end %>
+    </div>
+  </div>
+  <div class="search-form-container">
+    <%= form_with url:"/", method: :get, class: "search-form" do |form| %>
+      <div class="row search-dropdown">
+        <%= form.label :category, "Select a category:"%>
+        <%= form.select :category, Activity.categories %>
+      </div>
+      <div class="row search-dropdown">
+        <%= form.label :location, "Location:" %>
+        <%= form.select :location, Activity.postcodes %>
+      </div>
+  </div>
+      <div class="search-bottom">
+        <div class="search-checkbox">
+          <%= form.check_box :meet_dogs %>
+          <%= form.label :meet_dogs, "want to meet other dogs?" %>
+        </div>
+        <%= form.submit "Search", class: "search-submit" %>
+      </div>
+    <% end %>
+  </div>
