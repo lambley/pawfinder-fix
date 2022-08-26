@@ -1,12 +1,29 @@
-.navbar-lewagon {
+.navbar-sticky {
   justify-content: space-between;
   background: white;
 }
 
-.navbar-lewagon .navbar-collapse {
+.navbar-sticky .navbar-collapse {
   flex-grow: 0;
 }
 
-.navbar-lewagon .navbar-brand img {
-  width: 40px;
+.navbar-sticky .nav-text{
+  font-size: 20px;
+  padding: .5rem, 0;
+  color: #404347;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+li{
+//   font-size: 20px;
+//   color: #404347;
+//   text-decoration: none;
+//   transition: 0.3s;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.nav-text:hover {
+  color: #7b7f85;
 }
