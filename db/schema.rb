@@ -42,6 +42,54 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_26_103440) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "activities", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.string "category"
+    t.string "restaurant_type"
+    t.string "park_feature"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_activities_on_user_id"
+  end
+
+  create_table "dogs", force: :cascade do |t|
+    t.string "name"
+    t.string "breed"
+    t.string "colour"
+    t.integer "age"
+    t.text "biography"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_dogs_on_user_id"
+  end
+
+  create_table "locations", force: :cascade do |t|
+    t.string "street"
+    t.string "city"
+    t.string "postcode"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "locatable_type", null: false
+    t.bigint "locatable_id", null: false
+    t.float "latitude"
+    t.float "longitude"
+    t.index ["locatable_type", "locatable_id"], name: "index_locations_on_locatable"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.text "content"
+    t.integer "rating"
+    t.bigint "user_id", null: false
+    t.bigint "activity_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["activity_id"], name: "index_reviews_on_activity_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -50,10 +98,17 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_26_103440) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "first_name"
+    t.string "last_name"
+    t.text "biography"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "activities", "users"
+  add_foreign_key "dogs", "users"
+  add_foreign_key "reviews", "activities"
+  add_foreign_key "reviews", "users"
 end
