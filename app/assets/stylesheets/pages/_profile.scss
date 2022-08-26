@@ -1,5 +1,11 @@
-.profile_card {
-  position: absolute;
+.flexbox-container {
+display: grid;
+justify-content: space-around;
+flex-direction: column;
+
+}
+.flexbox-item {
+  margin: 28px;
   width: 641px;
   height: 315px;
   left: 70px;
@@ -8,4 +14,12 @@
   border: 1px solid #E6E8EB;
   box-shadow: 1px 1px 4px 1px rgba(0, 0, 0, 0.25);
   border-radius: 8px;
+}
+
+.flexbox-item-profile {
+  align-self: flex-start;
+}
+
+.flexbox-item-your-favourites {
+  grid-area: 1 / col4-start / last-line / 6;
 }
