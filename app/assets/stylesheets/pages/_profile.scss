@@ -1,11 +1,66 @@
-.profile_card {
-  position: absolute;
+.profile-card {
+  display: flex;
+  flex-direction: row;
+  margin: 28px;
   width: 641px;
   height: 315px;
-  left: 70px;
-  top: 121px;
   background: #FFFFFF;
   border: 1px solid #E6E8EB;
   box-shadow: 1px 1px 4px 1px rgba(0, 0, 0, 0.25);
   border-radius: 8px;
+
+  img {
+    margin-top: 58px;
+    margin-left: 46px;
+  }
+
+  .profile-info {
+    margin-top: 58px;
+    margin-left: 36px;
+  }
+}
+
+.pets-card {
+  display: flex;
+  flex-direction: row;
+  margin: 28px;
+  width: 641px;
+  height: 315px;
+  background: #FFFFFF;
+  border: 1px solid #E6E8EB;
+  box-shadow: 1px 1px 4px 1px rgba(0, 0, 0, 0.25);
+  border-radius: 8px;
+
+  img {
+    margin-top: 58px;
+    margin-left: 46px;
+  }
+
+  .profile-info {
+    margin-top: 58px;
+    margin-left: 36px;
+  }
+
+}
+
+.favourites-card {
+  display: flex;
+  flex-direction: row;
+  margin: 28px;
+  width: 641px;
+  height: 315px;
+  background: #FFFFFF;
+  border: 1px solid #E6E8EB;
+  box-shadow: 1px 1px 4px 1px rgba(0, 0, 0, 0.25);
+  border-radius: 8px;
+
+  img {
+    margin-top: 58px;
+    margin-left: 46px;
+  }
+
+  .profile-info {
+    margin-top: 58px;
+    margin-left: 36px;
+  }
 }
