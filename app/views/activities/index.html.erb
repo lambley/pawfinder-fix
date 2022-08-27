@@ -1,16 +1,12 @@
-<div class="container">
-  <div class="row justify-content-md-center">
-    <div class="row match-to-row">
-      <div class="col-md-4">
-        <%# this is going to be side filter / search %>
-      </div>
-      <div class="col-md-4">
-        <%# render card here %>
-        <%= render 'shared/card', activities: @activities %>
-      </div>
-      <%# Render Mapbox %>
-      <div class="col-md-4">
-        <%= render 'shared/map' %>
-      </div>
+  <div class="row justify-content-between pt-3">
+    <div>
+      <%# this is going to be side filter / search using js%>
     </div>
-</div>
+    <div class="col-7">
+      <%# render card here %>
+      <%= render 'shared/card', activities: @activities %>
+    </div>
+    <div class="col-5">
+      <%# map here %>
+    </div>
+  </div>
