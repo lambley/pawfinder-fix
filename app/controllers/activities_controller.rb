@@ -2,6 +2,12 @@ class ActivitiesController < ApplicationController
   def index
     @activities = Activity.all
     # later - add search or where on category
+    @markers = @activities.map do |activity|
+      {
+        lat: activity.location.latitude,
+        lng: activity.location.longitude
+      }
+    end
   end
 
   def new
