@@ -3,7 +3,7 @@
     <div class="col-xs-4">
       <%= simple_form_for @review, url: :activity_reviews  do |f| %>
         <%= f.input :content %>
-        <%= f.input :rating, collection: (1..10).to_a, label: "Rate your experience" %>
+        <%= f.input :rating, collection: (1..10).to_a, label: "Rate your experience", input_html: {data: {controller: "star-rating"}}%>
         <%= f.submit "Send your review" %>
       <% end %>
     </div>

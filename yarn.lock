@@ -402,6 +402,11 @@ csscolorparser@~1.0.3:
   resolved "https://registry.yarnpkg.com/csscolorparser/-/csscolorparser-1.0.3.tgz#b34f391eea4da8f3e98231e2ccd8df9c041f171b"
   integrity sha512-umPSgYwZkdFoUrH5hIq5kf0wPSXiro51nPw0j2K/c83KflkPSTBGMz6NJvMB+07VlL0y7VPo6QJcDjcgKTTm3w==
 
+detect-it@^4.0.0:
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/detect-it/-/detect-it-4.0.1.tgz#3f8de6b8330f5086270571251bedf10aec049e18"
+  integrity sha512-dg5YBTJYvogK1+dA2mBUDKzOWfYZtHVba89SyZUhc4+e3i2tzgjANFg5lDRCd3UOtRcw00vUTMK8LELcMdicug==
+
 earcut@^2.2.4:
   version "2.2.4"
   resolved "https://registry.yarnpkg.com/earcut/-/earcut-2.2.4.tgz#6d02fd4d68160c114825d06890a92ecaae60343a"
@@ -856,6 +861,13 @@ source-map@^0.6.0:
   version "0.6.1"
   resolved "https://registry.yarnpkg.com/source-map/-/source-map-0.6.1.tgz#74722af32e9614e9c287a8d0bbde48b5e2f1a263"
   integrity sha512-UjgapumWlbMhkBgzT7Ykc5YXUT46F0iKu8SGXq0bcwP5dz/h0Plj6enJqjz1Zbq2l5WaqYnrVbwWOWMyF3F47g==
+
+star-rating.js@^4.3.0:
+  version "4.3.0"
+  resolved "https://registry.yarnpkg.com/star-rating.js/-/star-rating.js-4.3.0.tgz#6ce4e092480b0693e74fe1799b3a37a7b85caf67"
+  integrity sha512-uHFwdMUf1+roKvZmh+clpkOpJMrRPSxvuWdIFh4oZtPCbyfUI3xzCWqDNtX060L+wRi3AHT3ZNH7JYf05FYeKQ==
+  dependencies:
+    detect-it "^4.0.0"
 
 supercluster@^7.1.4:
   version "7.1.5"
