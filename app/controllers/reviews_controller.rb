@@ -10,6 +10,7 @@ class ReviewsController < ApplicationController
     @review.user = current_user
     @review.activity = Activity.find(params[:activity_id])
     if @review.save
+      flash[:notice] = "Review created successfully."
       redirect_to activities_path, status: :see_other
     else
       flash[:alert] = "Something went wrong."
