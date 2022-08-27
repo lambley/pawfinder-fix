@@ -1,6 +1,9 @@
+<% count_rest = 0 %>
+<% count_bin = 0 %>
+<% count_park = 0 %>
 <% activities.each do |activity| %>
   <% if activity.category == 'restaurant' %>
-
+    <% count_rest += 1 %>
     <div class="container">
       <div class="card mb-3">
         <div class="row g-0">
@@ -9,17 +12,21 @@
           </div>
           <div class="col-md-8">
               <div class="card-body">
-                <h5 class="card-title"><%= activity.name %></h5>
+                <h5 class="card-title"><%= count_rest %>. <%= activity.name %></h5>
                 <p class="card-text"><%= activity.restaurant_type %></p>
                 <p class="card-text"><%= activity.description %></p>
+                <p><%= activity.reviews.count %> Reviews </p>
+                <% activity.reviews.each do |review|%>
+                  <p><%= review.rating %></p>
+                <% end %>
               </div>
           </div>
         </div>
       </div>
     </div>
 
-
   <% elsif activity.category == 'dog bin' %>
+    <% count_bin += 1 %>
     <div class="container">
       <div class="card mb-3">
         <div class="row g-0">
@@ -28,7 +35,11 @@
           </div>
           <div class="col-md-8">
               <div class="card-body">
-                <h5 class="card-title"><%= activity.name %></h5>
+                <h5 class="card-title"><%= count_bin %>. <%= activity.name %></h5>
+                <p><%= activity.reviews.count %> Reviews</p>
+                <% activity.reviews.each do |review|%>
+                  <p><%= review.rating %></p>
+                <% end %>
               </div>
           </div>
         </div>
@@ -36,6 +47,7 @@
     </div>
 
   <% else %>
+    <% count_park += 1 %>
     <div class="container">
       <div class="card mb-3">
         <div class="row g-0">
@@ -44,8 +56,12 @@
           </div>
           <div class="col-md-8">
               <div class="card-body">
-                <h5 class="card-title"><%= activity.name %></h5>
+                <h5 class="card-title"><%= count_park %>. <%= activity.name %></h5>
                 <p class="card-text"><%= activity.park_feature %></p>
+                <p><%= activity.reviews.count %> Reviews</p>
+                <% activity.reviews.each do |review|%>
+                  <p><%= review.rating %></p>
+                <% end %>
               </div>
           </div>
         </div>

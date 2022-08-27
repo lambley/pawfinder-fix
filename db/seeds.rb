@@ -1,9 +1,8 @@
 require 'csv'
 
-dog_csv = File.read(Rails.root.join('db','csv_seeds', 'dog.csv'))
-park_csv = File.read(Rails.root.join('db','csv_seeds', 'park.csv'))
+dog_csv = File.read(Rails.root.join('db', 'csv_seeds', 'dog.csv'))
 user_csv = File.read(Rails.root.join('db', 'csv_seeds', 'user.csv'))
-restaurant_csv = File.read(Rails.root.join('db', 'csv_seeds', 'restaurant.csv'))
+activity_csv = File.read(Rails.root.join('db', 'csv_seeds', 'activity.csv'))
 
 # USERS
 p "creating users"
@@ -14,12 +13,15 @@ user_csv_data.each do |row|
     first_name: row['first_name'],
     last_name: row['last_name'],
     biography: row['biography'],
-    email: Faker::Internet.email,
+    email: row['email'],
     password: "123456"
   )
   u.location = Location.create(
+    street: row["street"],
     city: row["city"],
-    postcode: row['postcode']
+    postcode: row['postcode'],
+    longitude: row['longitude'],
+    latitude: row['latitude']
   )
   counter += 1 if u.persisted?
   print "."
@@ -49,66 +51,30 @@ p ""
 p ">>> #{counter} #{'dog'.pluralize(counter)} generated"
 
 # ACTIVITIES
-p "creating activities - parks"
+p "creating activities"
 counter = 0
-park_csv_data = CSV.parse(park_csv, headers: true, encoding: 'ISO-8859-1')
-park_csv_data.each do |row|
-  park = Activity.create!(
+activity_csv_data = CSV.parse(activity_csv, headers: true, encoding: 'ISO-8859-1')
+activity_csv_data.each do |row|
+  a = Activity.create!(
     name: row["name"],
     description: row["description"],
     category: row["category"],
     park_feature: row["park_feature"],
+    restaurant_type: row["restaurant_type"],
     user_id: 1
   )
-  park.location = Location.create(
+  a.location = Location.create(
     street: row["street"],
     city: row["city"],
-    postcode: row["postcode"]
+    postcode: row["postcode"],
+    longitude: row["longitude"],
+    latitude: row["latitude"]
   )
-  counter += 1 if park.persisted?
+  counter += 1 if a.persisted?
   print "."
 end
 p ""
 
-p "creating activities - restaurants"
-restaurant_csv_data = CSV.parse(restaurant_csv, headers: true, encoding: 'ISO-8859-1')
-restaurant_csv_data.each do |row|
-  restaurant = Activity.create!(
-    name: row['name'],
-    description: row['description'],
-    category: row['category'],
-    restaurant_type: row['restaurant_type'],
-    user_id: 1
-  )
-  # error handle failed location creation
-  begin
-    restaurant.location = Location.create(
-      street: row["street"],
-      city: row["city"],
-      postcode: row["postcode"]
-    )
-  ensure
-    restaurant.location = Location.all.sample unless restaurant.location.present?
-    print "."
-  end
-  counter += 1 if restaurant.persisted?
-end
-p ""
-
-p "creating activities - dog bins"
-20.times do
-  random_park = Activity.where(category: "park").sample
-  bin = Activity.create!(
-    name: "Dog Bin, #{random_park}",
-    description: "A dog bin park in #{random_park}",
-    category: "dog bin",
-    user_id: 1
-  )
-  bin.location = random_park.location
-  print "."
-  counter += 1 if bin.persisted?
-end
-p ""
 p ">>> #{counter} #{'activity'.pluralize(counter)} in total generated"
 
 # REVIEWS
@@ -118,7 +84,7 @@ counter = 0
   # park reviews
   random_park = Activity.where(category: "park").sample
   park_review = Review.create!(
-    content: "#{random_park} - worth visiting!",
+    content: "#{random_park.name} - worth visiting!",
     rating: rand(1..10),
     user_id: User.ids.sample,
     activity_id: random_park.id
@@ -127,7 +93,7 @@ counter = 0
   # restaurant reviews
   random_restaurant = Activity.where(category: "restaurant").sample
   restaurant_review = Review.create!(
-    content: "#{random_restaurant} - interesting menu!",
+    content: "#{random_restaurant.name} - interesting menu!",
     rating: rand(1..10),
     user_id: User.ids.sample,
     activity_id: random_restaurant.id
@@ -136,7 +102,7 @@ counter = 0
   # bin reviews
   random_bin = Activity.where(category: "restaurant").sample
   bin_review = Review.create!(
-    content: "#{random_bin} - useful location!",
+    content: "#{random_bin.name} - useful location!",
     rating: rand(1..10),
     user_id: User.ids.sample,
     activity_id: random_bin.id
