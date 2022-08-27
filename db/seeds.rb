@@ -19,7 +19,7 @@ user_csv_data.each do |row|
   )
   u.location = Location.create(
     city: row["city"],
-    postcode: row['city']
+    postcode: row['postcode']
   )
   counter += 1 if u.persisted?
   print "."
