@@ -12,6 +12,7 @@ class ReviewsController < ApplicationController
     if @review.save
       redirect_to activities_path, status: :see_other
     else
+      flash[:alert] = "Something went wrong."
       redirect_to new_activity_review_path, status: :unprocessable_entity
     end
   end
