@@ -71,4 +71,9 @@ class Activity < ApplicationRecord
     end
     return postcodes
   end
+
+  def average_rating
+    round_to_one = reviews.map(&:rating).sum/reviews.map(&:rating).count.to_f
+    round_to_one.round(1)
+  end
 end
