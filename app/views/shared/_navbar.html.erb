@@ -1,9 +1,10 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-sticky">
   <div class="container-fluid">
-    <%= link_to "#", class: "nav-text" do %>
-      <%= cl_image_tag("PawFinder/Assets/clear-logo", width: 80) %>Home
-    <% end %>
-
+    <div class="d-flex align-items-center flex-row">
+      <%= link_to root_path, class: "nav-text" do %>
+        <%= cl_image_tag("PawFinder/Assets/clear-logo", width: 80) %>PawFinder
+      <% end %>
+    </div>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>
@@ -18,7 +19,7 @@
             <% end %>
           </li>
           <li class="nav-item dropdown">
-            <%= cl_image_tag("dog-solid_wiclnh", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false) %>
+            <%= cl_image_tag("https://upload.wikimedia.org/wikipedia/commons/1/1b/Creative-Tail-Animal-dog.svg", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false) %>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
               <%= link_to "Parks", "#", class: "dropdown-item" %>
               <%= link_to "Restaurants", "#", class: "dropdown-item" %>
