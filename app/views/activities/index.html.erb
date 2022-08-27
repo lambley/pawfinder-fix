@@ -3,11 +3,13 @@
       <div>
         <%# this is going to be side filter / search using js%>
       </div>
-      <div class="col-7">
+      <div class="col-md-4">
         <%# render card here %>
         <%= render 'shared/card', activities: @activities %>
+      <%# Render Mapbox %>
+      <div class="col-md-4">
+        <%= render 'shared/map' %>
       </div>
-      <div class="col-5">
-        <img src="..." style="object-fit: fill; repeat: no-repeat;" alt="lonodn-map">
-      </div>
+    </div>
   </div>
+</div>
