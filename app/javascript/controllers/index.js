@@ -7,5 +7,10 @@ import { application } from "./application"
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
+
 import HomeSearchController from "./home_search_controller"
 application.register("home-search", HomeSearchController)
+
+import MapController from "./map_controller"
+application.register("map", MapController)
+

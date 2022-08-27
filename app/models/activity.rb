@@ -48,6 +48,10 @@ class Activity < ApplicationRecord
   validates :restaurant_type, inclusion: RESTAURANT_TYPE
   validates :park_feature, inclusion: PARK_FEATURE
 
+  # pg_search
+  # include PgSearch::Model
+  # pg_search_scope :search_by_location, against: :location
+
   def self.categories
     return CATEGORY.sort
   end
@@ -70,5 +74,10 @@ class Activity < ApplicationRecord
       postcodes << activity.location.postcode unless activity.location.nil?
     end
     return postcodes
+  end
+
+  def average_rating
+    round_to_one = reviews.map(&:rating).sum/reviews.map(&:rating).count.to_f
+    round_to_one.round(1)
   end
 end
