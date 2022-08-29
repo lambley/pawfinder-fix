@@ -49,8 +49,8 @@ class Activity < ApplicationRecord
   validates :park_feature, inclusion: PARK_FEATURE
 
   # pg_search
-  # include PgSearch::Model
-  # pg_search_scope :search_by_location, against: :location
+  include PgSearch::Model
+  pg_search_scope :search_by_category, against: :category
 
   def self.categories
     return CATEGORY.sort
