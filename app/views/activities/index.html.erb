@@ -3,8 +3,9 @@
       <%# this is going to be side filter / search using js%>
     </div>
     <div class="col-7">
-      <%# render card here %>
-      <%= render 'shared/card', activities: @activities %>
+    <% @activities.each do |activity| %>
+        <%= render 'shared/card', activity: activity %>
+    <% end %>
     </div>
     <div class="col-5">
       <%# map here %>
