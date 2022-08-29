@@ -100,7 +100,7 @@ counter = 0
   )
   counter += 1 if restaurant_review.persisted?
   # bin reviews
-  random_bin = Activity.where(category: "bin").sample
+  random_bin = Activity.where(category: "dog bin").sample
   bin_review = Review.create!(
     content: "#{random_bin.name} - useful location!",
     rating: rand(1..10),
