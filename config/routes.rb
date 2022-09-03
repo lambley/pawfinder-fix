@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'favourites/create', to: "favourites#create"
+  get 'favourites/destroy', to: "favourites#destroy"
   root to: "pages#home"
   get "/restaurant-search", to: "pages#restaurant"
   get "/park-search", to: "pages#park"
