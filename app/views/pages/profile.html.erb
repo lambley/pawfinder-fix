@@ -1,37 +1,42 @@
-<div>
-  <div class="profile-card">
-    <div class="image">
-      <%= cl_image_tag(@user.cl_tag) %>
-    </div>
-    <div class="profile-info">
-      <h1>Your Profile</h1>
-      <h2><%= @user.first_name.capitalize %></h2>
-      <p><%= @user.location.address.capitalize %></p>
-      <p><input type="checkbox">Want to meet other dogs?</p>
-    </div>
-  </div>
 
-  <div class="profile-card">
-    <div class="image">
-      <img src="assets/image 1.png" alt="">
-    </div>
-    <div class="profile-info">
-      <h1>Your Pets</h1>
-      <h2><%= @user.first_name.capitalize %></h2>
-      <p>Location</p>
-      <p><input type="checkbox">Want to meet other dogs?</p>
-    </div>
-  </div>
+  <div class="row justify-content-center">
+    <div class="col-4">
+      <div class="profile-card">
+        <div class="image">
+          <%= cl_image_tag(@user.cl_tag) %>
+        </div>
 
-    <div class="favourites-card">
-    <div class="image">
-      <img src="assets/image 1.png" alt="">
+        <div class="profile-info">
+          <h1>Your Profile</h1>
+          <h2><%= @user.first_name.capitalize %></h2>
+          <p><%= @user.location.address.capitalize %></p>
+          <p><input type="checkbox">Want to meet other dogs?</p>
+        </div>
+      </div>
+      <br>
+      <div class="profile-card">
+        <div class="image">
+          <img src="assets/image 1.png" alt="">
+        </div>
+        <div class="profile-info">
+          <h1>Your Pets</h1>
+          <h2><%= @user.first_name.capitalize %></h2>
+          <p>Location</p>
+          <p><input type="checkbox">Want to meet other dogs?</p>
+        </div>
+      </div>
     </div>
-    <div class="profile-info">
-      <h1>My Favourites</h1>
-      <h2><%= @user.first_name.capitalize %></h2>
-      <p>Location</p>
-      <p><input type="checkbox">Want to meet other dogs?</p>
+
+    <div class="col-4">
+      <div class="favourites-card">
+      <div class="image">
+        <img src="assets/image 1.png" alt="">
+      </div>
+      <div class="profile-info">
+        <h1>My Favourites</h1>
+        <h2><%= @user.first_name.capitalize %></h2>
+        <p>Location</p>
+        <p><input type="checkbox">Want to meet other dogs?</p>
+      </div>
     </div>
   </div>
-</div>
