@@ -60,6 +60,10 @@ class Activity < ApplicationRecord
     return PARK_FEATURE.sort { |a,b| a <=> b || (b && 1) || -1 }
   end
 
+  def self.restaurant_types
+    return RESTAURANT_TYPE.sort { |a,b| a <=> b || (b && 1) || -1 }
+  end
+
   def self.locations
     locations = []
     Activity.all.each do |activity|
