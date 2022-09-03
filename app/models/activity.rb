@@ -40,6 +40,7 @@ class Activity < ApplicationRecord
   include Locatable
   belongs_to :user
   has_many :reviews
+  has_one_attached :photo
 
   # validations
   validates :name, presence: true

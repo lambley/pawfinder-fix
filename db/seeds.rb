@@ -61,6 +61,7 @@ activity_csv_data.each do |row|
     category: row["category"],
     park_feature: row["park_feature"],
     restaurant_type: row["restaurant_type"],
+    cl_tag: row["cl_tag"],
     user_id: 1
   )
   a.location = Location.create(
