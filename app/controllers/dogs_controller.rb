@@ -1,4 +1,4 @@
-class DogController < ApplicationController
+class DogsController < ApplicationController
   def index
     # change this later to index only for current_user
     @dogs = Dog.all
