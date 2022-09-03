@@ -1,2 +1,19 @@
-<h1>Dog#show</h1>
-<p>Find me in app/views/dog/show.html.erb</p>
+<div class="dog-main">
+  <div class="dog-top-profile">
+    <div class="dog-avatar">
+      <h1><%= cl_image_tag("PawFinder/Dogs/dog_28", {class: 'dog-avatar'}) %></h1>
+    </div>
+    <div class="dog-info">
+      <h1><%= @dog.name %></h1>
+      <h2><%= @dog.breed %></h2>
+      <h4 class="dog-info-2"><%= @dog.age %></h4>
+      <h4 class="dog-info-2"><%= @dog.colour %></h4>
+      </br>
+      </br>
+      <div>
+      <button type="button" class="btn btn-primary">Contact Owner</button>
+      <button type="button" class="btn btn-success text-center">♡</button>
+      </div>
+    </div>
+  </div>
+</div>
