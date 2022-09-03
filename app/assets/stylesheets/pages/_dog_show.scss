@@ -13,16 +13,26 @@
 .dog-info{
   flex-direction: column;
   padding-left: 25px;
-  padding-top: 50px;
+  padding-top: 85px;
   color: #404347;
 }
 
-.dog-info-2{
-  font-weight: lighter;
+#dog-info-weight1{
+  font-weight: 700;
+}
+
+#dog-info-weight2{
+  font-weight: 400;
+}
+
+.dog-info-weight3{
+  font-weight: 100;
+  color: #7b7f85;
 }
 
 .btn-primary{
   background: #2E67D1;
+  border-color: #2E67D1;
   border-radius: 12px;
   height: 30px;
   width: 150px;
@@ -37,6 +47,7 @@
 
 .btn-success{
   background: #2E67D1;
+  border-color: #2E67D1;
   border-radius: 12px;
   height: 30px;
   width: 40px;
