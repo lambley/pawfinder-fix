@@ -59,7 +59,7 @@
 
 }
 .search-form {
-  display: flex;
+  min-width: 0
   div {
     margin: 0 16px;
     padding: 8px 16px;
@@ -74,9 +74,13 @@
   margin-left: 8px;
 }
 
+.search-top {
+  display: flex;
+  margin: 16px;
+}
 .search-bottom {
   display: flex;
-  margin: 16px 16px 0px 0px;
+  margin: 16px;
   justify-content: space-between;
   align-items: flex-end;
 }

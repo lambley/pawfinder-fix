@@ -78,9 +78,9 @@ p ""
 p ">>> #{counter} #{'activity'.pluralize(counter)} in total generated"
 
 # REVIEWS
-p "creating park reviews"
 counter = 0
-60.times do
+p "creating reviews"
+180.times do
   # park reviews
   random_park = Activity.where(category: "park").sample
   park_review = Review.create!(
@@ -89,6 +89,7 @@ counter = 0
     user_id: User.ids.sample,
     activity_id: random_park.id
   )
+  print "."
   counter += 1 if park_review.persisted?
   # restaurant reviews
   random_restaurant = Activity.where(category: "restaurant").sample
@@ -98,6 +99,7 @@ counter = 0
     user_id: User.ids.sample,
     activity_id: random_restaurant.id
   )
+  print "."
   counter += 1 if restaurant_review.persisted?
   # bin reviews
   random_bin = Activity.where(category: "dog bin").sample
@@ -107,6 +109,8 @@ counter = 0
     user_id: User.ids.sample,
     activity_id: random_bin.id
   )
+  print "."
   counter += 1 if bin_review.persisted?
 end
+p ""
 p ">>> #{counter} #{'review'.pluralize(counter)} generated"
