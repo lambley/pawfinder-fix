@@ -67,6 +67,7 @@ class Dog < ApplicationRecord
   ]
 
   # associations
+  include Favouritable
   belongs_to :user
   has_one :location, through: :user
 
