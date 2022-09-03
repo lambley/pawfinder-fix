@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   # associations
   include Locatable
+  has_many :favourites, inverse_of: :user
   has_many :dogs
   has_many :reviews
 

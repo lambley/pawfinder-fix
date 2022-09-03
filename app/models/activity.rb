@@ -38,6 +38,7 @@ class Activity < ApplicationRecord
 
   # associations
   include Locatable
+  include Favouritable
   belongs_to :user
   has_many :reviews
   has_one_attached :photo
