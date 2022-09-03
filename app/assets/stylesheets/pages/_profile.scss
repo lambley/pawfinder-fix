@@ -8,39 +8,34 @@
   border: 1px solid #E6E8EB;
   box-shadow: 1px 1px 4px 1px rgba(0, 0, 0, 0.25);
   border-radius: 8px;
-
-  img {
-    margin-top: 58px;
-    margin-left: 46px;
-  }
-
-  .profile-info {
-    margin-top: 58px;
-    margin-left: 36px;
-  }
 }
 
 .pets-card {
+  padding: 30px;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   margin: 28px;
   width: 641px;
-  height: 315px;
+  height: 700px;
   background: #FFFFFF;
   border: 1px solid #E6E8EB;
   box-shadow: 1px 1px 4px 1px rgba(0, 0, 0, 0.25);
   border-radius: 8px;
 
-  img {
-    margin-top: 58px;
-    margin-left: 46px;
+  .each-pets-card {
+    display: flex;
+    flex-direction: row;
+    width: 500px;
+    height: 100px;
+    background: #FFFFFF;
+    border: 1px solid #E6E8EB;
+    box-shadow: 1px 1px 4px 1px rgba(0, 0, 0, 0.25);
+    border-radius: 8px;
+    img {
+      width: 20%;
+      height: 100%;
+    }
   }
-
-  .profile-info {
-    margin-top: 58px;
-    margin-left: 36px;
-  }
-
 }
 
 .favourites-card {
@@ -53,14 +48,8 @@
   border: 1px solid #E6E8EB;
   box-shadow: 1px 1px 4px 1px rgba(0, 0, 0, 0.25);
   border-radius: 8px;
+}
 
-  img {
-    margin-top: 58px;
-    margin-left: 46px;
-  }
-
-  .profile-info {
-    margin-top: 58px;
-    margin-left: 36px;
-  }
+.profile-info {
+  padding: 16px;
 }
