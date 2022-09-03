@@ -38,8 +38,10 @@ class Activity < ApplicationRecord
 
   # associations
   include Locatable
+  include Favouritable
   belongs_to :user
   has_many :reviews
+  has_one_attached :photo
 
   # validations
   validates :name, presence: true
@@ -58,6 +60,10 @@ class Activity < ApplicationRecord
 
   def self.park_features
     return PARK_FEATURE.sort { |a,b| a <=> b || (b && 1) || -1 }
+  end
+
+  def self.restaurant_types
+    return RESTAURANT_TYPE.sort { |a,b| a <=> b || (b && 1) || -1 }
   end
 
   def self.locations

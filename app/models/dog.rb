@@ -67,6 +67,7 @@ class Dog < ApplicationRecord
   ]
 
   # associations
+  include Favouritable
   belongs_to :user
   has_one :location, through: :user
 
@@ -76,4 +77,13 @@ class Dog < ApplicationRecord
   validates :colour, inclusion: COLOURS
   validates :age, numericality: { only_integer: true, greater_than: 0 }
   validates :biography, length: { minimum: 10, maximum: 500 }
+
+  # pg_search
+  include PgSearch::Model
+  pg_search_scope :search_by_breed, against: :breed
+
+  def self.breeds
+    return BREEDS.sort { |a,b| a <=> b || (b && 1) || -1 }
+  end
+
 end

@@ -3,26 +3,18 @@
     <div class="row g-0">
       <div class="col-md-4">
 
-      <!-- display different image based on category -->
-      <% if activity.category == "restaurant" %>
-        <img src="https://www.svgrepo.com/show/58017/restaurant-symbol-of-cutlery-in-a-circle.svg" width="150px" height="150px" class="img-fluid rounded-start" alt="activity card photo">
-      <% elsif activity.category == "park" %>
-        <img src="https://www.svgrepo.com/show/85152/public-park.svg" width="150px" height="150px" class="img-fluid rounded-start" alt="activity card photo">
-      <% else %>
-        <img src="https://www.svgrepo.com/show/287780/garbage-bin.svg" width="150px" height="150px" class="img-fluid rounded-start" alt="activity card photo">
-      <% end %>
-      <!--end-->
+        <%= cl_image_tag(activity.cl_tag, width: 150, height: 150, class: "img-fluid rounded-start") %>
 
       </div>
       <div class="col-md-8">
         <div class="card-body">
-          <h5 class="card-title"><%= activity.id + 1 %>. <%= activity.name %></h5>
+          <h5 class="card-title"><%= activity.name.capitalize %></h5>
 
           <!-- display different card info based on category -->
           <% if activity.category == "restaurant" %>
-            <p class="card-text"><%= activity.restaurant_type %></p>
+            <p class="card-text"><%= activity.restaurant_type.capitalize %></p>
           <% elsif activity.category == "park" %>
-            <p class="card-text"><%= activity.park_feature %></p>
+            <p class="card-text"><%= activity.park_feature.capitalize %></p>
           <% end %>
           <!--end-->
 

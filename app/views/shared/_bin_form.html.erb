@@ -1,0 +1,24 @@
+<div class="search-form-container">
+  <%= form_with url: "/activities", method: :get, class: "search-form" do |form| %>
+  <!-- dropdowns-->
+  <div class="search-top">
+    <div class="row search-dropdown" id="search-slider">
+      <%= form.label :range, id: "search-slider-output" %>
+      <%= form.range_field :range, in: 0..20, step: '1', data: {
+        home_search_target: "slider",
+        action: "change->home-search#sliderUpdate"
+      } %>
+    </div>
+  </div>
+  <div class="search-bottom">
+    <div class="search-checkbox">
+    <!-- checkbox-->
+    <%= form.check_box :meet_dogs %>
+    <%= form.label :meet_dogs, "want to meet other dogs?" %>
+    </div>
+    <!-- submit-->
+    <%= form.submit "Submit", class: "search-submit"%>
+    <%= hidden_field_tag(:category, 'dog bin') %>
+  <% end %>
+  </div>
+</div>

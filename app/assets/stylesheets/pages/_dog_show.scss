@@ -1,0 +1,51 @@
+.dog-top-profile{
+  padding-top: 80px;
+  display: flex;
+  justify-content: center;
+}
+
+.dog-avatar {
+  width: 300px;
+  border-radius: 10%;
+  filter: drop-shadow(2px 2px 2px rgb(200, 200, 200));
+}
+
+.dog-info{
+  flex-direction: column;
+  padding-left: 25px;
+  padding-top: 50px;
+  color: #404347;
+}
+
+.dog-info-2{
+  font-weight: lighter;
+}
+
+.btn-primary{
+  background: #2E67D1;
+  border-radius: 12px;
+  height: 30px;
+  width: 150px;
+  line-height: 3px;
+  color: $white;
+  filter: drop-shadow(2px 2px 2px rgb(200, 200, 200));
+  &:hover {
+    box-shadow: 1px 1px 4px 1px rgba(0, 0, 0, 0.25);
+    background: $green;
+  }
+}
+
+.btn-success{
+  background: #2E67D1;
+  border-radius: 12px;
+  height: 30px;
+  width: 40px;
+  line-height: 1px;
+  text-align: center;
+  color: $white;
+  filter: drop-shadow(2px 2px 2px rgb(200, 200, 200));
+  &:hover {
+    box-shadow: 1px 1px 4px 1px rgba(0, 0, 0, 0.25);
+    background: $green;
+  }
+}

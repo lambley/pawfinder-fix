@@ -19,7 +19,7 @@
             <% end %>
           </li>
           <li class="nav-item dropdown">
-            <%= cl_image_tag("https://upload.wikimedia.org/wikipedia/commons/1/1b/Creative-Tail-Animal-dog.svg", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false) %>
+            <%= cl_image_tag(current_user.cl_tag, crop: :thumb, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false) %>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
               <%= link_to "Parks", "#", class: "dropdown-item" %>
               <%= link_to "Restaurants", "#", class: "dropdown-item" %>
