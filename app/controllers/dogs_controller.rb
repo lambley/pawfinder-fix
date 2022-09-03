@@ -1,7 +1,13 @@
-class DogController < ApplicationController
+class DogsController < ApplicationController
   def index
     # change this later to index only for current_user
-    @dogs = Dog.all
+    @dogs = params.present? ? Dog.search_by_breed(params[:breed]) : Dog.all
+    @markers = @dogs.map do |dog|
+      {
+        lat: dog.user.location.latitude,
+        lng: dog.user.location.longitude
+      }
+    end
   end
 
   def show
