@@ -4,16 +4,22 @@
       <h1><%= cl_image_tag(@dog.cl_tag, {class: 'dog-avatar'}) %></h1>
     </div>
     <div class="dog-info">
-      <h1><%= @dog.name %></h1>
-      <h2><%= @dog.breed %></h2>
-      <h4 class="dog-info-2"><%= @dog.age %></h4>
-      <h4 class="dog-info-2"><%= @dog.colour %></h4>
+      <h1 id="dog-info-weight1"><%= @dog.name %></h1>
+      <h2 id="dog-info-weight2"><%= @dog.breed %></h2>
+      <h4 class="dog-info-weight3"><%= @dog.age %>yrs, <%= @dog.colour %></h4>
       </br>
       </br>
       <div>
       <button type="button" class="btn btn-primary">Contact Owner</button>
       <button type="button" class="btn btn-success text-center">♡</button>
       </div>
+    </div>
+  </div>
+  </br>
+  </br>
+  <div class="dog-about">
+    <div class="profile-card">
+      <h3>About:</h3>
     </div>
   </div>
 </div>
