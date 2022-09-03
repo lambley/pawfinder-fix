@@ -1,7 +1,12 @@
 class DogsController < ApplicationController
   def index
-    # change this later to index only for current_user
+    # find dogs from search params
     @dogs = params.present? ? Dog.search_by_breed(params[:breed]) : Dog.all
+    # but default to all dogs if search leads to no results
+    if @dogs.empty?
+      @dogs = Dog.all
+      flash[:notice] = "No dogs of selected breed found. Showing all dogs."
+    end
     @markers = @dogs.map do |dog|
       {
         lat: dog.user.location.latitude,
