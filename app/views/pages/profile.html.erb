@@ -1,17 +1,17 @@
 <div>
   <div class="profile-card">
     <div class="image">
-      <img src="assets/image 1.png" alt="">
+      <%= [image_tag("https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"), image_tag("https://res.cloudinary.com/le-wagon-london-campus-batch-904/image/upload/c_thumb,w_200,g_face/v1660254926/karsten-winegeart-ewfHXBcuFA0-unsplash_cffclz.jpg"), image_tag("https://res.cloudinary.com/le-wagon-london-campus-batch-904/image/upload/c_thumb,w_200,g_face/v1660254926/kerwin-elias-7-ToFEHzMNw-unsplash_ffseqw.jpg"), image_tag("https://res.cloudinary.com/le-wagon-london-campus-batch-904/image/upload/c_thumb,w_200,g_face/v1660254926/karsten-winegeart--_gMskl-uoc-unsplash_ldomqk.jpg")].sample %>
     </div>
     <div class="profile-info">
       <h1>Your Profile</h1>
       <h2><%= @user.first_name.capitalize %></h2>
-      <p>Location</p>
+      <p><%= @user.location.address.capitalize %></p>
       <p><input type="checkbox">Want to meet other dogs?</p>
     </div>
   </div>
 
-  <div class="pets-card">
+  <div class="profile-card">
     <div class="image">
       <img src="assets/image 1.png" alt="">
     </div>
