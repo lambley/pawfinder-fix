@@ -8,7 +8,7 @@ class Favourite < ApplicationRecord
     message: 'can only favorite an item once'
   }
 
-  scope :activities, -> { where(favoritable_type: 'Activity') }
-  scope :dogs, -> { where(favoritable_type: 'Dog') }
+  scope :activities, -> { where(favouritable_type: 'Activity') }
+  scope :dogs, -> { where(favouritable_type: 'Dog') }
 
 end
