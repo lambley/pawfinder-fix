@@ -14,7 +14,8 @@ user_csv_data.each do |row|
     last_name: row['last_name'],
     biography: row['biography'],
     email: row['email'],
-    password: "123456"
+    password: "123456",
+    cl_tag: row['cl_tag']
   )
   u.location = Location.create(
     street: row["street"],
