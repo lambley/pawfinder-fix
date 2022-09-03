@@ -29,8 +29,8 @@ export default class extends Controller {
           .then((res) => res.text())
           .then((html) => {
             document.getElementById(renderId).innerHTML = html
+            this.sliderUpdate()
           })
-        this.sliderUpdate()
         break;
       case "restaurant-search":
         fetch("/restaurant-search", {
@@ -39,8 +39,8 @@ export default class extends Controller {
           .then((res) => res.text())
           .then((html) => {
             document.getElementById(renderId).innerHTML = html
+            this.sliderUpdate()
           })
-        this.sliderUpdate()
         break;
       case "bin-search":
         fetch("/bin-search", {
@@ -49,8 +49,8 @@ export default class extends Controller {
           .then((res) => res.text())
           .then((html) => {
             document.getElementById(renderId).innerHTML = html
+            this.sliderUpdate()
           })
-        this.sliderUpdate()
         break;
       case "dog-search":
         fetch("/dog-search", {
@@ -59,8 +59,8 @@ export default class extends Controller {
           .then((res) => res.text())
           .then((html) => {
             document.getElementById(renderId).innerHTML = html
+            this.sliderUpdate()
           })
-        this.sliderUpdate()
         break;
       default:
         console.log("no id");
