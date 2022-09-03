@@ -1,12 +1,12 @@
 <div class="dog-main">
   <div class="dog-top-profile">
     <div class="dog-avatar">
-      <h1><%= cl_image_tag("PawFinder/Dogs/dog_28") %></h1>
+      <h1><%= cl_image_tag("PawFinder/Dogs/dog_28", {class: 'dog-avatar'}) %></h1>
     </div>
     <div class="dog-info">
-      <h4><%= @dog.name %></h4>
+      <h1><%= @dog.name %></h1>
+      <h2><%= @dog.breed %></h2>
       <h4><%= @dog.age %></h4>
-      <h4><%= @dog.breed %></h4>
       <h4><%= @dog.colour %></h4>
     </div>
   </div>

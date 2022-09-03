@@ -1,0 +1,17 @@
+.dog-top-profile{
+  padding-top: 100px;
+  display: flex;
+  justify-content: center;
+}
+
+.dog-avatar {
+  width: 300px;
+  border-radius: 10%;
+  filter: drop-shadow(2px 2px 2px rgb(200, 200, 200));
+}
+
+.dog-info{
+  padding-left: 50px;
+  padding-top: 70px;
+  color: #404347;
+}
