@@ -60,3 +60,51 @@
     background: $green;
   }
 }
+
+.dog-card{
+  padding: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 28px;
+  margin-left: 100px;
+  margin-right: 100px;
+  width: fit-content;
+  height: 315px;
+  background: #FFFFFF;
+  border: 1px solid #E6E8EB;
+  box-shadow: 1px 1px 4px 1px rgba(0, 0, 0, 0.25);
+  border-radius: 8px;
+}
+.dog-card h2{
+    width: 225px;
+  }
+.dog-card p{
+    padding-top: 20px;
+    width: 1200px;
+  }
+.dog-card h4{
+    padding-top: 10px;
+    padding-right: 20px;
+    padding-left: 20px;
+    padding-bottom: 10px;
+    // width: 200px;
+  }
+
+.about-info{
+  display: flex;
+  justify-content: space-between;
+}
+
+.about-answers{
+  display: flex;
+  justify-content: space-between;
+}
+
+.about-answers p{
+  padding-right: 60px;
+  padding-left: 100px;
+  padding-bottom: 20px;
+  width: 225px;
+  text-decoration: underline;
+}
