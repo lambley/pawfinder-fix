@@ -41,6 +41,7 @@ dog_csv_data.each do |row|
     colour: row['colour'],
     age: row['age'],
     biography: row['biography'],
+    cl_tag: row['cl_tag'],
     user_id: user_increment
   )
   counter += 1 if d.persisted?
