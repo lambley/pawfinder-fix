@@ -14,7 +14,8 @@ user_csv_data.each do |row|
     last_name: row['last_name'],
     biography: row['biography'],
     email: row['email'],
-    password: "123456"
+    password: "123456",
+    cl_tag: row['cl_tag']
   )
   u.location = Location.create(
     street: row["street"],
@@ -41,6 +42,7 @@ dog_csv_data.each do |row|
     colour: row['colour'],
     age: row['age'],
     biography: row['biography'],
+    cl_tag: row['cl_tag'],
     user_id: user_increment
   )
   counter += 1 if d.persisted?
@@ -61,6 +63,7 @@ activity_csv_data.each do |row|
     category: row["category"],
     park_feature: row["park_feature"],
     restaurant_type: row["restaurant_type"],
+    cl_tag: row["cl_tag"],
     user_id: 1
   )
   a.location = Location.create(

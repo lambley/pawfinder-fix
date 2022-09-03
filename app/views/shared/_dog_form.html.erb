@@ -1,0 +1,31 @@
+<div class="search-form-container">
+  <% if user_signed_in? %>
+    <%= form_with url: "/dogs", method: :get, class: "search-form" do |form| %>
+    <!-- dropdowns-->
+    <div class="search-top">
+      <div class="search-dropdown">
+        <%= form.label :breed, "Select a breed:"%>
+        <%= form.select :breed, Dog.breeds, selected: Dog.breeds.first %>
+      </div>
+      <div class="row search-dropdown" id="search-slider">
+        <%= form.label :range, id: "search-slider-output" %>
+        <%= form.range_field :range, in: 0..20, step: '1', data: {
+          home_search_target: "slider",
+          action: "change->home-search#sliderUpdate"
+        } %>
+      </div>
+    </div>
+    <div class="search-bottom">
+      <div class="search-checkbox">
+      <!-- checkbox-->
+      <%= form.check_box :meet_dogs %>
+      <%= form.label :meet_dogs, "want to meet other dogs?" %>
+      </div>
+      <!-- submit-->
+      <%= form.submit "Submit", class: "search-submit"%>
+    <% end %>
+  <% else %>
+    <h3>Please login to view dogs</h3>
+  <% end %>
+  </div>
+</div>

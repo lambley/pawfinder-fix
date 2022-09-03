@@ -2,28 +2,30 @@
   <div class="search-filters" data-home-search-target="filters">
 
     <%# parks %>
-    <div class="park-search search-filter active-search-filter" data-action="click->home-search#changeActiveFilter" data-home-search-target="filter">
+    <div class="park-search search-filter active-search-filter" id="park-search" data-action="click->home-search#changeActiveFilter" data-home-search-target="filter">
       <i class="fa-solid fa-tree"></i>
       <p>Parks</p>
     </div>
 
     <%# restaurants %>
-    <div class="restaurant-search search-filter" data-action="click->home-search#changeActiveFilter" data-home-search-target="filter">
+    <div class="restaurant-search search-filter" id="restaurant-search" data-action="click->home-search#changeActiveFilter" data-home-search-target="filter">
       <i class="fa-solid fa-utensils"></i>
       <p>Restaurants</p>
     </div>
 
     <%# bins %>
-    <div class="bin-search search-filter" data-action="click->home-search#changeActiveFilter" data-home-search-target="filter">
+    <div class="bin-search search-filter" id="bin-search" data-action="click->home-search#changeActiveFilter" data-home-search-target="filter">
       <i class="fa-solid fa-trash"></i>
       <p>Dog bins</p>
     </div>
 
     <%# dogs %>
-    <div class="dog-search search-filter" data-action="click->home-search#changeActiveFilter" data-home-search-target="filter">
+    <div class="dog-search search-filter" id="dog-search" data-action="click->home-search#changeActiveFilter" data-home-search-target="filter">
       <i class="fa-solid fa-dog"></i>
       <p>Dogs</p>
     </div>
   </div>
-  <%= render "pages/shared/park_form" %>
+  <div id="search-form-render">
+    <%= render "shared/park_form"  %>
+  </div>
 </div>

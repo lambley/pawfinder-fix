@@ -1,2 +1,13 @@
-<h1>Dog#index</h1>
-<p>Find me in app/views/dog/index.html.erb</p>
+<div class="row justify-content-between pt-3">
+  <div>
+    <%# this is going to be side filter / search using js%>
+  </div>
+  <div class="col-7">
+  <% @dogs.each do |dog| %>
+      <%= render 'shared/dog_card', dog: dog %>
+  <% end %>
+  </div>
+  <div class="col-5">
+    <%= render 'shared/map' %>
+  </div>
+</div>
