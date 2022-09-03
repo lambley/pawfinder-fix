@@ -6,9 +6,12 @@
       <%= form.label :feature, "Select a park feature:"%>
       <%= form.select :feature, Activity.park_features, selected: Activity.park_features.first %>
     </div>
-    <div class="search-dropdown">
-      <%= form.label :range, "Within range (km):" %>
-      <%= form.range_field :range, in: 0..20, step: '.1' %>
+    <div class="row search-dropdown" id="search-slider">
+      <%= form.label :range, id: "search-slider-output" %>
+      <%= form.range_field :range, in: 0..20, step: '1', data: {
+        home_search_target: "slider",
+        action: "change->home-search#sliderUpdate"
+      } %>
     </div>
   </div>
   <div class="search-bottom">
