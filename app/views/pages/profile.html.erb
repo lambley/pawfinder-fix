@@ -1,4 +1,23 @@
 
+  <div class="pets-card">
+    <h1>Your Pets</h1>
+    <div class="container each-pets-card justify-content-around m-3">
+      <img class="avatar" src="https://pm1.narvii.com/7256/39a7bc046cd888c051aa2382d89b91b5eba9e80er1-1536-2048v2_hq.jpg" alt="">
+      <div class="profile-info flex-column ">
+        <% @user.dogs.each do |dog| %>
+          <p><%= dog.name %></p>
+          <p><%= dog.breed %></p>
+        <% end %>
+        </div>
+        <div class="edit-dog-profile d-flex justify-content-end align-items-center flex-column">
+          <a href="#">edit</a>
+          <a href="#"><i class="fa-duotone fa-caret-down"></i></a>
+        </div>
+      </div>
+    </div>
+    <br>
+  </div>
+
   <div class="row justify-content-center">
     <div class="col-4">
       <div class="profile-card">
