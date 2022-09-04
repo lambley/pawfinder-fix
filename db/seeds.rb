@@ -117,3 +117,15 @@ p "creating reviews"
 end
 p ""
 p ">>> #{counter} #{'review'.pluralize(counter)} generated"
+
+p "Generating random favourites"
+
+10.times do
+  User.last.favourites << Favourite.create(favouritable: Activity.all.sample)
+  print "."
+end
+
+50.times do
+  User.all.sample.favourites << Favourite.create(favouritable: Activity.all.sample)
+  print "."
+end
