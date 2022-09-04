@@ -2,7 +2,13 @@ class ActivitiesController < ApplicationController
   skip_before_action :authenticate_user!, only: :index
 
   def index
-    @activities = params.present? ? Activity.search_by_category(params[:category]) : Activity.all
+    # find activities from search params
+    @activities = params[:query].present? ? Activity.search_by_category(params[:category]) : Activity.all
+    # but default to all Activities if search leads to no results
+    if @activities.empty?
+      @activities = Activity.all
+      flash[:notice] = "No activities of selected category found. Showing all dogs."
+    end
     @markers = @activities.map do |activity|
       {
         lat: activity.location.latitude,

@@ -1,7 +1,7 @@
 class DogsController < ApplicationController
   def index
     # find dogs from search params
-    @dogs = params.present? ? Dog.search_by_breed(params[:breed]) : Dog.all
+    @dogs = params[:query].present? ? Dog.search_by_breed(params[:breed]) : Dog.all
     # but default to all dogs if search leads to no results
     if @dogs.empty?
       @dogs = Dog.all
