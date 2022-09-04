@@ -1,49 +1,32 @@
-  <div class="row justify-content-center">
-    <div class="col-4">
-      <div class="profile-card">
-        <div class="image">
-          <%= cl_image_tag(@user.cl_tag) %>
-        </div>
+<div class="profile-container">
 
-        <div class="profile-info">
-          <h1>Your Profile</h1>
-          <h2><%= @user.first_name.capitalize %></h2>
-          <p><%= @user.location.address.capitalize %></p>
-          <p><input type="checkbox">Want to meet other dogs?</p>
-        </div>
-      </div>
-      <br>
-      <div class="profile-card">
-        <div class="profile-info">
-          <h1>Your Pets</h1>
-          <div class="container each-pets-card justify-content-around m-3">
-            <img class="avatar" src="https://pm1.narvii.com/7256/39a7bc046cd888c051aa2382d89b91b5eba9e80er1-1536-2048v2_hq.jpg" alt="">
-          <div class="profile-info flex-column ">
-            <% @user.dogs.each do |dog| %>
-              <p><%= dog.name %></p>
-              <p><%= dog.breed %></p>
-            <% end %>
-          </div>
-          <div class="edit-dog-profile d-flex justify-content-end align-items-center flex-column">
-            <a href="#">edit</a>
-            <a href="#"><i class="fa-duotone fa-caret-down"></i></a>
-          </div>
-        </div>
-      </div>
-      <br>
-    </div>
-  </div>
+  <div class="profile-column pt-3">
 
-    <div class="col-4">
-      <div class="favourites-card">
-      <div class="image">
-        <img src="assets/image 1.png" alt="">
-      </div>
-      <div class="profile-info">
-        <h1>My Favourites</h1>
-        <h2><%= @user.first_name.capitalize %></h2>
-        <p>Location</p>
-        <p><input type="checkbox">Want to meet other dogs?</p>
+    <div class="profile-card profile-favourites">
+      <h2><%= current_user.first_name.capitalize %>'s Favourites</h2>
+      <div class="profile-favourites-cards">
+        <% current_user.favourites.each do |favourite| %>
+          <%= render "shared/profile_favourites", activity: Activity.find(favourite.favouritable_id) %>
+        <% end %>
       </div>
     </div>
+
   </div>
+
+  <div class="profile-column pt-3">
+
+    <div class="profile-card">
+      <%= cl_image_tag(current_user.cl_tag, crop: :thumb, gravity: :face, class: "profile-card-avatar") %>
+      <div class="profile-card-info">
+        <h2><%= current_user.name %></h2>
+        <p><%= current_user.location.address %></p>
+        <small><%= current_user.biography %></small>
+      </div>
+    </div>
+    <% current_user.dogs.each do |dog| %>
+      <%= render "shared/profile_dogs", dog: dog %>
+    <% end %>
+
+  </div>
+
+</div>
