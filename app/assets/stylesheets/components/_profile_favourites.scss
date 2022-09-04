@@ -1,0 +1,31 @@
+.profile-favourites-card {
+  display: flex;
+  height: 200px;
+  margin: 8px auto;
+  padding: 16px;
+  background-color: #27334717;
+  box-shadow: 1px 1px 2px 2px #00000005;
+  border-radius: 8px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  width: 90%;
+}
+
+.profile-favourites-card-image {
+  margin-right: 16px;
+  align-self: center;
+  img {
+    object-fit: cover;
+    max-width:100%;
+    max-height:100%;
+  }
+}
+
+.profile-favourites-card-info {
+  p {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 300px;
+  }
+}
