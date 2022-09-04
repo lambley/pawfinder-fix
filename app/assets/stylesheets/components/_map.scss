@@ -1,6 +1,14 @@
 .map-container {
   width: 100%;
-  height: 600px;
+  height: 1vh;
+}
+
+#map {
+  position: fixed;
+  right: 0;
+  top: 116px;
+  width: 41.66666667%;
+  height: 100%;
 }
 
 // .mapboxgl-popup {
@@ -12,6 +20,10 @@
 //   font-family: $body-font;
 // }
 
-.mapboxgl-map {
-  position: fixed !important;
+// .mapboxgl-map {
+//   position: fixed !important;
+// }
+
+.map-fit-markers {
+  z-index: 99999;
 }
