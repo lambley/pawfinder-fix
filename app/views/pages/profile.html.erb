@@ -5,7 +5,7 @@
     <div class="profile-card profile-favourites">
       <h2><%= current_user.first_name.capitalize %>'s Favourites</h2>
       <div class="profile-favourites-cards">
-        <% current_user.favourites.each do |favourite| %>
+        <% current_user.favourites.sort.reverse.each do |favourite| %>
           <%= render "shared/profile_favourites", activity: Activity.find(favourite.favouritable_id) %>
         <% end %>
       </div>
