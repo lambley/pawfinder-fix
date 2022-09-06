@@ -12,18 +12,18 @@
           <!--Display favourite heart-->
           <div class="dog-card-favourite" id="dog-card-favourite" data-controller="favourite">
             <% if dog.favourite.nil? %>
-              <%= link_to(activity_favourites_path(dog), data: { turbo_method: "POST" }, dog: dog.id) do %>
+              <%= link_to(dog_favourites_path(dog), data: { turbo_method: "POST" }, dog: dog.id) do %>
                 <i class="fa-regular fa-heart" data-action="click->favourite#addToFavourites" data-favourite-target="heart"></i>
               <% end %>
             <% else %>
               <% if current_user.favourites.ids.include?(dog.favourite.id) %>
-                <%= link_to(activity_favourite_path(id: Favourite.where(user_id: current_user.id, favouritable_id: dog.id).first.id, dog_id: dog), data: { turbo_method: "DELETE" }, dog: dog.id) do %>
+                <%= link_to(dog_favourite_path(id: Favourite.where(user_id: current_user.id, favouritable_id: dog.id).first.id, dog_id: dog), data: { turbo_method: "DELETE" }, dog: dog.id) do %>
                   <i class="fa-solid fa-heart"></i>
                 <% end %>
               <% else %>
-                <%= link_to(activity_favourites_path(dog), data: { turbo_method: "POST" }, dog: dog.id) do %>
-                  <i class="fa-regular fa-heart" data-action="click->favourite#addToFavourites" data-favourite-target="heart"></i>
-                <% end %>
+              <%= link_to(dog_favourites_path(dog), data: { turbo_method: "POST" }, dog: dog.id) do %>
+                <i class="fa-regular fa-heart" data-action="click->favourite#addToFavourites" data-favourite-target="heart"></i>
+              <% end %>
               <% end %>
             <% end %>
           </div>
