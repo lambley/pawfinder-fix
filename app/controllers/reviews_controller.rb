@@ -2,14 +2,14 @@ class ReviewsController < ApplicationController
   def new
     @review = Review.new()
     @user = current_user
-    @activity = Activity.find(params[:activity_id])
+    # @activity = Activity.find(params[:activity_id])
   end
 
   def create
     @review = Review.new(review_params)
     @review.user = current_user
     @review.activity = Activity.find(params[:activity_id])
-    if @review.save
+    if @review.save!
       flash[:notice] = "Review created successfully."
       redirect_to activities_path, status: :see_other
     else
