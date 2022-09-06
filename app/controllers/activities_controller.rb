@@ -3,7 +3,7 @@ class ActivitiesController < ApplicationController
 
   def index
     # find activities from search params
-    @activities = params[:query].present? ? Activity.search_by_category(params[:category]) : Activity.all
+    @activities = params[:category].present? ? Activity.search_by_category(params[:category]) : Activity.all
     # but default to all Activities if search leads to no results
     if @activities.empty?
       @activities = Activity.all
