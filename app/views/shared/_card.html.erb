@@ -19,7 +19,9 @@
           <!--end-->
 
           <p class="card-text"><%= activity.description %></p>
-          <p> <%= int_to_stars(activity.average_rating, 10) %> <small><%= activity.reviews.count %> Reviews </small></p>
+          <p> <%= int_to_stars(activity.average_rating, 10) %>
+            <small><%= activity.reviews.count %> Reviews </small>&nbsp;&nbsp;
+              <button type="button" class="btn btn-primary-card">Add review</button></p>
 
           <!--Display favourite heart-->
           <% if user_signed_in? %>
