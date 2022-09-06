@@ -10,7 +10,9 @@ Rails.application.routes.draw do
     resources :reviews, only: %i[new create edit update]
     resources :favourites, only: %i[create destroy]
   end
-  resources :dogs, only: %i[index show new create]
+  resources :dogs, only: %i[index show new create] do
+    resources :favourites, only: %i[create destroy]
+  end
   resources :activities, only: %i[index new create]
   resources :locations, only: %i[index new create]
 end
