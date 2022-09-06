@@ -11,8 +11,8 @@ class ActivitiesController < ApplicationController
     end
     @markers = @activities.map do |activity|
       {
-        lat: activity.location.latitude,
-        lng: activity.location.longitude
+        lat: activity.latitude,
+        lng: activity.longitude
       }
     end
   end
@@ -25,10 +25,10 @@ class ActivitiesController < ApplicationController
   def create
     @activity = Activity.new(activity_params)
     @activity.user = current_user
-    if @activity.save
+    if @activity.save!
       redirect_to activities_path, status: :see_other
     else
-      redirect_to activities_new_path, status: :unprocessable_entity
+      render :new
     end
   end
 

@@ -1,2 +1,12 @@
-<h1>Activities#new</h1>
-<p>Find me in app/views/activities/new.html.erb</p>
+<%= simple_form_for(@activity) do |f| %>
+  <%= f.input :name, html5: true, :label => "Name" %>
+  <%= f.input :description, html5: true, :label => "Description" %>
+  <%= f.input :category, :collection => %w[--- restaurant park bin], html5: true, :label => "Category" %>
+  <%= f.input :restaurant_type, html5: true, :label => "Restaurant type" %>
+  <%= simple_fields_for :location do |i| %>
+    <%= i.input :street %>
+    <%= i.input :city %>
+    <%= i.input :postcode %>
+  <% end %>
+  <%= f.button :submit %>
+<% end %>
