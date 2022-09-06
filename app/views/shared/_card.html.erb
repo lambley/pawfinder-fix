@@ -26,14 +26,20 @@
 
           <!--Display favourite heart-->
           <% if user_signed_in? %>
-            <div class="card-favourite" id="card-favourite">
+            <div class="card-favourite" id="card-favourite" data-controller="favourite">
               <% if activity.favourite.nil? %>
-                <i class="fa-regular fa-heart"></i>
+                <%= link_to(activity_favourites_path(activity), data: { turbo_method: "POST" }, activity: activity.id) do %>
+                  <i class="fa-regular fa-heart" data-action="click->favourite#addToFavourites" data-favourite-target="heart"></i>
+                <% end %>
               <% else %>
                 <% if current_user.favourites.ids.include?(activity.favourite.id) %>
-                  <i class="fa-solid fa-heart"></i>
+                  <%= link_to(activity_favourite_path(id: Favourite.where(user_id: current_user.id, favouritable_id: activity.id).first.id, activity_id: activity), data: { turbo_method: "DELETE" }, activity: activity.id) do %>
+                    <i class="fa-solid fa-heart" data-action="click->favourite#addToFavourites" data-favourite-target="heart"></i>
+                  <% end %>
                 <% else %>
-                  <i class="fa-regular fa-heart"></i>
+                  <%= link_to(activity_favourites_path(activity), data: { turbo_method: "POST" }, activity: activity.id) do %>
+                    <i class="fa-regular fa-heart" data-action="click->favourite#addToFavourites" data-favourite-target="heart"></i>
+                  <% end %>
                 <% end %>
               <% end %>
             </div>
