@@ -22,3 +22,10 @@
     color: $gray;
   }
 }
+
+.card-review-total {
+  padding: 0 8px;
+  &:hover {
+    color: $green;
+  }
+}
