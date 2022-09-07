@@ -1,0 +1,9 @@
+<div class="review-index-container">
+  <%= link_to profile_path, class: "profile-review-back-button" do %>
+    <p><i class="fa-solid fa-caret-left"></i>Back</p>
+  <% end %>
+  <h1>Reviews by <em><%= @user.name.capitalize %></em></h1>
+  <% @reviews.each do |review| %>
+    <%= render "shared/review_card", review: review %>
+  <% end %>
+</div>
