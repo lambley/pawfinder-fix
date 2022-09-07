@@ -1,0 +1,4 @@
+<h1>Reviews for <em><%= @activity.name.capitalize %></em></h1>
+<% @reviews.each do |review| %>
+  <%= render "shared/review_card", review: review %>
+<% end %>
