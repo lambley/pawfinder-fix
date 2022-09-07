@@ -9,6 +9,11 @@ class PagesController < ApplicationController
     @user = current_user
   end
 
+  def profile_reviews
+    @user = current_user
+    @reviews = @user.reviews
+  end
+
   def restaurant
     respond_to do |format|
       format.text { render partial: "shared/restaurant_form", formats: [:html] }
