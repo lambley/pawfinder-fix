@@ -4,7 +4,7 @@ class Location < ApplicationRecord
 
   # geocoder
   geocoded_by :address
-  after_validation :geocode
+  after_validation :geocode, unless: ->(obj) { obj.longitude.present? and obj.latitude.present? }
 
   # validations
   validates_presence_of :city
