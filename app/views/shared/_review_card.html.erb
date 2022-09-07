@@ -1,0 +1,4 @@
+<div class="review-card">
+  <h3><%= review.content.capitalize %> - <em><%= User.find(review.user_id).first_name %></em></h3>
+  <p><p class="card-review-stars"> <%= int_to_stars(review.rating, 10) %></p>
+</div>
