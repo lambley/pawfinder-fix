@@ -28,8 +28,10 @@
             <%= link_to "Add review", new_activity_review_path(activity), class: "btn btn-primary-card", user: current_user %>
           </p>
           <p>
-            <i class="fa-solid fa-quote-left"></i> <%= rand_review.content %> <i class="fa-solid fa-quote-right"></i>
-            - <em><%= User.find(rand_review.user_id).first_name %></em>
+            <% unless activity.reviews.empty? %>
+              <i class="fa-solid fa-quote-left"></i> <%= rand_review.content %> <i class="fa-solid fa-quote-right"></i>
+              - <em><%= User.find(rand_review.user_id).first_name %></em>
+            <% end %>
           </p>
 
           <!--Display favourite heart-->
