@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  get 'favourites/create', to: "favourites#create"
-  get 'favourites/destroy', to: "favourites#destroy"
   root to: "pages#home"
   get "/restaurant-search", to: "pages#restaurant"
   get "/park-search", to: "pages#park"
@@ -9,8 +7,12 @@ Rails.application.routes.draw do
   get "/profile", to: "pages#profile"
   devise_for :users
   resources :activities, only: %i[index new create] do
-    resources :reviews, only: %i[new create edit update]
+    resources :reviews, only: %i[index new create edit update]
+    resources :favourites, only: %i[create destroy]
   end
-  resources :dogs, only: %i[index show new create]
+  resources :dogs, only: %i[index show new create] do
+    resources :favourites, only: %i[create destroy]
+  end
+  resources :activities, only: %i[index new create]
   resources :locations, only: %i[index new create]
 end
