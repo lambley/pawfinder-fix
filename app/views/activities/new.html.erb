@@ -1,2 +1,64 @@
-<h1>Activities#new</h1>
-<p>Find me in app/views/activities/new.html.erb</p>
+<div class="devise-form-wrapper" data-controller="new-activity">
+  <div id="new-activity-selector">
+    <h3>Select activity type to create</h3>
+    <select name="activity" id="newActivitySelector" class="new-activity-selector" data-new-activity-target="select" data-action="change->new-activity#showForm">
+      <option value=""></option>
+      <option value="park">Park</option>
+      <option value="restaurant">Restaurant</option>
+      <option value="dog bin">Dog bin</option>
+    </select>
+  </div>
+
+  <div class="display-none" id="new-activity-form" data-new-activity-target="restaurantForm">
+    <h3>Add new <em>Restaurant</em></h3>
+    <small><%= link_to "make new selection?", new_activity_path %></small>
+    <hr>
+    <%= simple_form_for(@activity) do |f| %>
+      <%= f.input :name, html5: true, label: "Name" %>
+      <%= f.input :description, html5: true, label: "Description" %>
+      <%= f.input :restaurant_type, html5: true, label: "Restaurant type", collection: Activity.restaurant_types %>
+      <%= simple_fields_for :location do |i| %>
+        <%= i.input :street %>
+        <%= i.input :city %>
+        <%= i.input :postcode %>
+      <% end %>
+      <%= f.hidden_field :category, value: "restaurant" %>
+      <%= f.button :submit, class: "devise-form-button" %>
+    <% end %>
+  </div>
+
+  <div class="display-none" id="new-activity-form" data-new-activity-target="parkForm">
+    <h3>Add new <em>Park</em></h3>
+    <small><%= link_to "make new selection?", new_activity_path %></small>
+    <hr>
+    <%= simple_form_for(@activity) do |f| %>
+      <%= f.input :name, html5: true, label: "Name" %>
+      <%= f.input :description, html5: true, label: "Description" %>
+      <%= f.input :park_feature, html5: true, label: "Park feature", collection: Activity.park_features %>
+      <%= simple_fields_for :location do |i| %>
+        <%= i.input :street %>
+        <%= i.input :city %>
+        <%= i.input :postcode %>
+      <% end %>
+      <%= f.hidden_field :category, value: "park" %>
+      <%= f.button :submit, class: "devise-form-button" %>
+    <% end %>
+  </div>
+
+  <div class="display-none" id="new-activity-form" data-new-activity-target="binForm">
+    <h3>Add new <em>Dog Bin</em></h3>
+    <small><%= link_to "make new selection?", new_activity_path %></small>
+    <hr>
+    <%= simple_form_for(@activity) do |f| %>
+      <%= f.input :name, html5: true, label: "Name" %>
+      <%= f.input :description, html5: true, label: "Description" %>
+      <%= simple_fields_for :location do |i| %>
+        <%= i.input :street %>
+        <%= i.input :city %>
+        <%= i.input :postcode %>
+      <% end %>
+      <%= f.hidden_field :category, value: "dog bin" %>
+      <%= f.button :submit, class: "devise-form-button" %>
+    <% end %>
+  </div>
+</div>

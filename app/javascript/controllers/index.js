@@ -16,5 +16,8 @@ application.register("home-search", HomeSearchController)
 import MapController from "./map_controller"
 application.register("map", MapController)
 
+import NewActivityController from "./new_activity_controller"
+application.register("new-activity", NewActivityController)
+
 import StarRatingController from "./star_rating_controller"
 application.register("star-rating", StarRatingController)

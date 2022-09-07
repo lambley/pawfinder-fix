@@ -2,6 +2,10 @@ class Location < ApplicationRecord
   # associations
   belongs_to :locatable, polymorphic: true
 
+  # geocoder
+  geocoded_by :address
+  after_validation :geocode
+
   # validations
   validates_presence_of :city
   validates_presence_of :postcode

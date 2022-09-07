@@ -1,2 +1,4 @@
-<h1>Create new location</h1>
-<p>simple form here</p>
+<%= simple_form_for @activities do |f| %>
+<%= f.input :name, html5: true, :label => "Name" %>
+<%= f.input :description, html5: true, :label => "Description" %>
+<% end %>

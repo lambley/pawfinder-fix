@@ -25,10 +25,16 @@ class ActivitiesController < ApplicationController
   def create
     @activity = Activity.new(activity_params)
     @activity.user = current_user
-    if @activity.save
+    street = params[:location][:street]
+    city = params[:location][:city]
+    postcode = params[:location][:postcode]
+    if @activity.save!
+      Location.create!(street:, city:, postcode:, locatable_id: @activity.id, locatable_type: "Activity")
+      flash.now[:notice] = "Created #{@activity.name.capitalize} sucessfully!"
       redirect_to activities_path, status: :see_other
     else
-      redirect_to activities_new_path, status: :unprocessable_entity
+      flash.now[:alert] = "Failed to create activity"
+      render :new
     end
   end
 

@@ -12,7 +12,7 @@
 
           <!-- display different card info based on category -->
           <% if activity.category == "restaurant" %>
-            <p class="card-text"><%= activity.restaurant_type.capitalize %></p>
+            <p class="card-text"><%= activity.restaurant_type %></p>
           <% elsif activity.category == "park" %>
             <p class="card-text"><%= activity.park_feature.capitalize %></p>
           <% end %>
