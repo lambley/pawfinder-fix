@@ -18,19 +18,18 @@
   </div>
 
   <div class="profile-column pt-3">
-
     <div class="profile-card">
       <%= cl_image_tag(current_user.cl_tag, crop: :thumb, gravity: :face, class: "profile-card-avatar") %>
       <div class="profile-card-info">
         <h2><%= current_user.name %></h2>
         <p><%= current_user.location.address %></p>
         <small><%= current_user.biography %></small>
+        <p><%= link_to "Your reviews", profile_reviews_path, user: "true" %></p>
       </div>
     </div>
     <% current_user.dogs.each do |dog| %>
       <%= render "shared/profile_dogs", dog: dog %>
     <% end %>
-
   </div>
 
 </div>
