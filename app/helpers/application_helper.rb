@@ -1,7 +1,7 @@
 module ApplicationHelper
   def int_to_stars(average_rating, total)
     # Guard: return 0 if no average rating
-    return 0 if average_rating.nil?
+    # return 0 if average_rating.nil? || average_rating.zero?
 
     # a => quotient - whole stars
     # b => remainder - part stars
