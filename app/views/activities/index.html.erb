@@ -4,7 +4,7 @@
     </div>
     <div class="col-7">
     <% @activities.each do |activity| %>
-        <%= render 'shared/card', activity: activity %>
+        <%= render 'shared/card', activity: activity, rand_review: activity.reviews.sample %>
     <% end %>
     </div>
     <div class="col-5">
