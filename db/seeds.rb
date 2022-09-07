@@ -86,28 +86,77 @@ p "creating reviews"
 180.times do
   # park reviews
   random_park = Activity.where(category: "park").sample
+  random_park_reviews = [
+    "worth visiting #{random_park.name}!",
+    "#{random_park.name} - worth visiting!",
+    "one of the best parks in the area",
+    "#{random_park.name} is dog friendly and very clean",
+    "great afternoon walk location",
+    "definitely worth visiting #{random_park.name}",
+    "#{random_park.name} has lots of shade on those hotter days",
+    "a park with lots to see",
+    "lots to do round #{random_park.name}",
+    "#{random_park.name} - highly recommended",
+    "not sure if I would come back to #{random_park.name}",
+    "#{random_park.name} could be a better",
+    "#{random_park.name} could be worse"
+  ]
   park_review = Review.create!(
-    content: "#{random_park.name} - worth visiting!",
+    content: random_park_reviews.sample,
     rating: rand(1..10),
     user_id: User.ids.sample,
     activity_id: random_park.id
   )
   print "."
   counter += 1 if park_review.persisted?
+
   # restaurant reviews
   random_restaurant = Activity.where(category: "restaurant").sample
+  random_restaurant_reviews = [
+    "worth visiting #{random_restaurant.name}!",
+    "#{random_restaurant.name} - worth visiting!",
+    "one of the best restaurants in the area",
+    "#{random_restaurant.name} is dog friendly and very clean",
+    "great spot for an evening meal with friends",
+    "definitely worth visiting #{random_restaurant.name}",
+    "#{random_restaurant.name} has a great menu",
+    "#{random_restaurant.name} has a cheap menu with lots to choose from",
+    "a restaunrt with lots of variety",
+    "great atmosphere in #{random_restaurant.name}",
+    "#{random_restaurant.name} - highly recommended",
+    "not sure if I would come back to #{random_restaurant.name}",
+    "#{random_restaurant.name} could be a better",
+    "#{random_restaurant.name} could be worse"
+  ]
   restaurant_review = Review.create!(
-    content: "#{random_restaurant.name} - interesting menu!",
+    content: random_restaurant_reviews.sample,
     rating: rand(1..10),
     user_id: User.ids.sample,
     activity_id: random_restaurant.id
   )
   print "."
   counter += 1 if restaurant_review.persisted?
+
   # bin reviews
   random_bin = Activity.where(category: "dog bin").sample
+  random_bin_reviews = [
+    "worth visiting #{random_bin.name}!",
+    "#{random_bin.name} - worth visiting!",
+    "one of the best restaurants in the area",
+    "#{random_bin.name} is dog friendly and very clean",
+    "great spot for an evening meal with friends",
+    "definitely worth visiting #{random_bin.name}",
+    "#{random_bin.name} has a great menu",
+    "#{random_bin.name} has a cheap menu with lots to choose from",
+    "a restaunrt with lots of variety",
+    "great atmosphere in #{random_bin.name}",
+    "#{random_bin.name} - highly recommended",
+    "not sure if I would come back to #{random_bin.name}",
+    "#{random_bin.name} could be a better",
+    "#{random_bin.name} could be worse"
+  ]
   bin_review = Review.create!(
-    content: "#{random_bin.name} - useful location!",
+    content: random_bin_reviews.sample,
     rating: rand(1..10),
     user_id: User.ids.sample,
     activity_id: random_bin.id
