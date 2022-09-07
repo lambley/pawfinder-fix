@@ -1,4 +1,10 @@
 class ReviewsController < ApplicationController
+  skip_before_action :authenticate_user!, only: %i[index]
+  def index
+    @activity = Activity.find(params[:activity_id])
+    @reviews = Review.where(activity_id: @activity)
+  end
+
   def new
     @review = Review.new()
     @user = current_user

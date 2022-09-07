@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   get "/profile", to: "pages#profile"
   devise_for :users
   resources :activities, only: %i[index new create] do
-    resources :reviews, only: %i[new create edit update]
+    resources :reviews, only: %i[index new create edit update]
     resources :favourites, only: %i[create destroy]
   end
   resources :dogs, only: %i[index show new create] do
