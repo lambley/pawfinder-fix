@@ -11,8 +11,8 @@ class ActivitiesController < ApplicationController
     end
     @markers = @activities.map do |activity|
       {
-        lat: activity.latitude,
-        lng: activity.longitude
+        lat: activity.location.latitude,
+        lng: activity.location.longitude
       }
     end
   end
@@ -25,9 +25,15 @@ class ActivitiesController < ApplicationController
   def create
     @activity = Activity.new(activity_params)
     @activity.user = current_user
+    street = params[:location][:street]
+    city = params[:location][:city]
+    postcode = params[:location][:postcode]
     if @activity.save!
+      Location.create!(street:, city:, postcode:, locatable_id: @activity.id, locatable_type: "Activity")
+      flash.now[:notice] = "Created #{@activity.name.capitalize} sucessfully!"
       redirect_to activities_path, status: :see_other
     else
+      flash.now[:alert] = "Failed to create activity"
       render :new
     end
   end
