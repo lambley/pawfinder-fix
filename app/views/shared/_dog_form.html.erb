@@ -3,7 +3,7 @@
     <%= form_with url: "/dogs", method: :get, class: "search-form" do |form| %>
     <!-- dropdowns-->
     <div class="search-top">
-      <div class="search-dropdown">
+      <div class="row search-dropdown">
         <%= form.label :breed, "Select a breed:"%>
         <%= form.select :breed, Dog.breeds, selected: Dog.breeds.first %>
       </div>

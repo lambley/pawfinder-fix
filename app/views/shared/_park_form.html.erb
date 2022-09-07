@@ -2,7 +2,7 @@
   <%= form_with url: "/activities", method: :get, class: "search-form" do |form| %>
   <!-- dropdowns-->
   <div class="search-top">
-    <div class="search-dropdown">
+    <div class="row search-dropdown">
       <%= form.label :feature, "Select a park feature:"%>
       <%= form.select :feature, Activity.park_features, selected: Activity.park_features.first %>
     </div>

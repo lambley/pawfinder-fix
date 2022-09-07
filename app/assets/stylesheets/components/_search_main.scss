@@ -67,7 +67,7 @@
 }
 
 .search-dropdown {
-  text-overflow: ellipsis;
+  margin: 0 16px;
 }
 
 .search-checkbox {
@@ -76,6 +76,7 @@
 
 .search-top {
   display: flex;
+  justify-content: center;
   margin: 16px;
 }
 .search-bottom {
