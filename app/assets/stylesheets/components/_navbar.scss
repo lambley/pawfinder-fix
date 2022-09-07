@@ -30,3 +30,14 @@ li{
 .nav-text:hover {
   color: #7b7f85;
 }
+
+.nav-action-button {
+  background-color: $green;
+  color: white !important;
+  padding: 8px;
+  border-radius: 99999px;
+  box-shadow: 1px 1px 1px 1px #80808033;
+  &:hover {
+    
+  }
+}
