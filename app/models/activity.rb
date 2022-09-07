@@ -83,6 +83,9 @@ class Activity < ApplicationRecord
   end
 
   def average_rating
+    # if no reviews, return 0
+    return 0 if reviews.empty?
+
     round_to_one = reviews.map(&:rating).sum/reviews.map(&:rating).count.to_f
     round_to_one.round(1)
   end
