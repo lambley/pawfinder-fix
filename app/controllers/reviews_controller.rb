@@ -3,6 +3,7 @@ class ReviewsController < ApplicationController
   def index
     @activity = Activity.find(params[:activity_id])
     @reviews = Review.where(activity_id: @activity)
+    @user = current_user if params[:user].present?
   end
 
   def new
