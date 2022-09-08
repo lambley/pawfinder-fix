@@ -3,9 +3,22 @@ class ActivitiesController < ApplicationController
 
   def index
     # find activities from search params
-    @activities = params[:category].present? ? Activity.search_by_category(params[:category]) : Activity.all
-    # but default to all Activities if search leads to no results
-    if @activities.empty?
+    if params[:category].present? ? Activity.search_by_category(params[:category]) : Activity.all
+      # filter if park feature specified
+      if params[:feature].present?
+        @activities = Activity.search_by_category(params[:category]).where(park_feature: params[:feature])
+      # filter if restaurant_type specified
+      elsif params[:restaurant_type].present?
+        @activities = Activity.search_by_category(params[:category]).where(restaurant_type: params[:restaurant_type])
+      # else bins
+      else
+        @activities = Activity.search_by_category(params[:category])
+      end
+    else
+      @activities = Activity.all
+    end
+    # default to all Activities if search leads to no results
+    if @activities.empty? || @activities.nil?
       @activities = Activity.all
       flash[:notice] = "No activities of selected category found. Showing all activities."
     end

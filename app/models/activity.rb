@@ -55,15 +55,25 @@ class Activity < ApplicationRecord
   pg_search_scope :search_by_category, against: :category
 
   def self.categories
-    return CATEGORY.sort
+    CATEGORY.sort
   end
 
   def self.park_features
-    return PARK_FEATURE.sort { |a,b| a <=> b || (b && 1) || -1 }
+    parks = Activity.where(category: "park")
+    records_with_park_types = []
+    parks.each do |park|
+      records_with_park_types << park.park_feature
+    end
+    records_with_park_types.uniq.sort { |a,b| a <=> b || (b && 1) || -1 }
   end
 
   def self.restaurant_types
-    return RESTAURANT_TYPE.sort { |a,b| a <=> b || (b && 1) || -1 }
+    restaurants = Activity.where(category: "restaurant")
+    records_with_restaurant_types = []
+    restaurants.each do |restaurant|
+      records_with_restaurant_types << restaurant.restaurant_type
+    end
+    records_with_restaurant_types.uniq.sort { |a,b| a <=> b || (b && 1) || -1 }
   end
 
   def self.locations
