@@ -11,18 +11,14 @@
   height: 100%;
 }
 
-// .mapboxgl-popup {
-//   max-width: 200px;
-// }
+.mapboxgl-popup {
+  max-width: 200px;
+}
 
-// .mapboxgl-popup-content {
-//   text-align: center;
-//   font-family: $body-font;
-// }
-
-// .mapboxgl-map {
-//   position: fixed !important;
-// }
+.mapboxgl-popup-content {
+  text-align: center;
+  font-family: $body-font;
+}
 
 .map-fit-markers {
   z-index: 99999;
