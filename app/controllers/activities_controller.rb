@@ -3,9 +3,13 @@ class ActivitiesController < ApplicationController
 
   def index
     # find activities from search params
-    if params[:category].present? ? Activity.search_by_category(params[:category]) : Activity.all
+    if params[:category].present?
       # filter if park feature specified
       if params[:feature].present?
+        # show all
+        if params[:feature] == "all"
+
+        end
         @activities = Activity.search_by_category(params[:category]).where(park_feature: params[:feature])
       # filter if restaurant_type specified
       elsif params[:restaurant_type].present?

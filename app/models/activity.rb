@@ -64,6 +64,8 @@ class Activity < ApplicationRecord
     parks.each do |park|
       records_with_park_types << park.park_feature
     end
+    # add "all" to array
+    records_with_park_types << "all"
     records_with_park_types.uniq.sort { |a,b| a <=> b || (b && 1) || -1 }
   end
 
@@ -73,6 +75,8 @@ class Activity < ApplicationRecord
     restaurants.each do |restaurant|
       records_with_restaurant_types << restaurant.restaurant_type
     end
+    # add "all" to array
+    records_with_restaurant_types << "all"
     records_with_restaurant_types.uniq.sort { |a,b| a <=> b || (b && 1) || -1 }
   end
 
