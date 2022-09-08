@@ -29,3 +29,19 @@
     color: $green;
   }
 }
+
+.fa-heart {
+  color: $green;
+  font-size: x-large
+}
+
+.card-favourite {
+  color: $green;
+  font-size: x-large;
+  text-align: right;
+  i {
+    border: 1px solid $green;
+    border-radius: 9999999px;
+    padding: 8px;
+  }
+}
