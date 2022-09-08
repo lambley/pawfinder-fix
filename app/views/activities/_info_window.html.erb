@@ -1,2 +1,2 @@
-<h2><%= activity.name %></h2>
+<h2><%= activity.name %></h2><%= cl_image_tag(activity.cl_tag, width: 150, height: 150) %>
 <p><%= activity.location.street %>, <%= activity.location.city %>, <%= activity.location.postcode %></p>
