@@ -14,8 +14,8 @@
     <!--end-->
 
     <p><%= activity.description %></p>
-    <p> <%= int_to_stars(activity.average_rating, 10) %> <small><%= activity.reviews.count %> Reviews </small></p>
-      <div class="card-favourite" id="card-favourite" data-controller="favourite">
+    <p class="card-review-stars"> <%= int_to_stars(activity.average_rating, 10) %> <small><%= activity.reviews.count %> Reviews </small></p>
+      <div class="card-favourite" id="profile-card-favourite" data-controller="favourite">
         <% if activity.favourite.nil? %>
           <%= link_to(activity_favourites_path(activity), data: { turbo_method: "POST" }, activity: activity.id) do %>
             <i class="fa-regular fa-heart" data-action="click->favourite#addToFavourites" data-favourite-target="heart"></i>
