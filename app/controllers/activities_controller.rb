@@ -9,10 +9,12 @@ class ActivitiesController < ApplicationController
       @activities = Activity.all
       flash[:notice] = "No activities of selected category found. Showing all dogs."
     end
-    @markers = @activities.map do |activity|
+    @activities = Activity.all
+    @markers = @activities.map do |a|
       {
-        lat: activity.location.latitude,
-        lng: activity.location.longitude
+        lat: a.location.latitude,
+        lng: a.location.longitude,
+        info_window: render_to_string(partial: "info_window", locals: {activity: a})
       }
     end
   end
