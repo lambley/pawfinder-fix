@@ -2,7 +2,7 @@
   <%= form_with url: "/activities", method: :get, class: "search-form" do |form| %>
   <!-- dropdowns-->
   <div class="search-top">
-    <div class="search-dropdown">
+    <div class="row search-dropdown">
       <%= form.label :restaurant_type, "Select a restaurant type:"%>
       <%= form.select :restaurant_type, Activity.restaurant_types, selected: Activity.restaurant_types.first %>
     </div>
@@ -15,10 +15,10 @@
     </div>
   </div>
   <div class="search-bottom">
-    <div class="row search-checkbox">
     <!-- checkbox-->
-    <%= form.check_box :meet_dogs %>
-    <%= form.label :meet_dogs, "want to meet other dogs?" %>
+    <div class="search-checkbox">
+      <%= form.check_box :meet_dogs %>
+      <%= form.label :meet_dogs, "want to meet other dogs?" %>
     </div>
     <!-- submit-->
     <%= form.submit "Submit", class: "search-submit"%>
