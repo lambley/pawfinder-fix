@@ -7,13 +7,13 @@ class ActivitiesController < ApplicationController
     # but default to all Activities if search leads to no results
     if @activities.empty?
       @activities = Activity.all
-      flash[:notice] = "No activities of selected category found. Showing all dogs."
+      flash[:notice] = "No activities of selected category found. Showing all activities."
     end
     @markers = @activities.map do |a|
       {
         lat: a.location.latitude,
         lng: a.location.longitude,
-        info_window: render_to_string(partial: "info_window", locals: { activity: a })
+        info_window: render_to_string(partial: "shared/info_window", locals: { activity: a })
       }
     end
   end

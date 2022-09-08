@@ -10,7 +10,8 @@ class DogsController < ApplicationController
     @markers = @dogs.map do |dog|
       {
         lat: dog.user.location.latitude,
-        lng: dog.user.location.longitude
+        lng: dog.user.location.longitude,
+        info_window: render_to_string(partial: "shared/info_window", locals: { activity: dog })
       }
     end
   end
