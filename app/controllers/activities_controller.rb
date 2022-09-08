@@ -8,12 +8,19 @@ class ActivitiesController < ApplicationController
       if params[:feature].present?
         # show all
         if params[:feature] == "all"
-
+          @activities = Activity.search_by_category(params[:category])
+        # filter if restaurant_type specified
+        else
+          @activities = Activity.search_by_category(params[:category]).where(park_feature: params[:feature])
         end
-        @activities = Activity.search_by_category(params[:category]).where(park_feature: params[:feature])
-      # filter if restaurant_type specified
       elsif params[:restaurant_type].present?
-        @activities = Activity.search_by_category(params[:category]).where(restaurant_type: params[:restaurant_type])
+        # show all
+        if params[:restaurant_type] == "all"
+          @activities = Activity.search_by_category(params[:category])
+        # filter if restaurant_type specified
+        else
+          @activities = Activity.search_by_category(params[:category]).where(restaurant_type: params[:restaurant_type])
+        end
       # else bins
       else
         @activities = Activity.search_by_category(params[:category])
