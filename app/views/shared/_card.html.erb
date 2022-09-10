@@ -3,22 +3,24 @@
     <div class="row g-0">
       <div class="col-md-4">
 
-        <%= cl_image_tag(activity.cl_tag, width: 150, height: 150, class: "card-position") %>
+        <%= cl_image_tag(activity.cl_tag, :format => :png, class: "card-img", transformation:[ {width: 245, height: 200, crop: "crop", gravity:"auto", quality: "auto"},
+{radius: "25:0:0:25"} ] ) %>
 
       </div>
       <div class="col-md-8">
         <div class="card-body">
-          <h5 class="card-title"><%= activity.name.capitalize %></h5>
+          <h4 class="card-title"><%= activity.name.capitalize %></h4>
 
           <!-- display different card info based on category -->
           <% if activity.category == "restaurant" %>
-            <p class="card-text"><%= activity.restaurant_type %></p>
+            <h5 class="card-activity-info"><%= activity.restaurant_type %></h5>
           <% elsif activity.category == "park" %>
-            <p class="card-text"><%= activity.park_feature.capitalize %></p>
+            <h5 class="card-activity-info"><%= activity.park_feature.capitalize %></h5>
           <% end %>
           <!--end-->
-
+          </br>
           <p class="card-text"><%= activity.description %></p>
+          </br>
           <p class="card-review-stars"> <%= int_to_stars(activity.average_rating, 5) %>
             <small class="card-review-total">
               <%= link_to(activity_reviews_path(activity)) do %>
@@ -27,36 +29,37 @@
             </small>
             <%= link_to "Add review", new_activity_review_path(activity), class: "btn btn-primary-card", user: current_user %>
           </p>
-          <p>
-            <% unless activity.reviews.empty? %>
-              <i class="fa-solid fa-quote-left"></i> <%= rand_review.content %> <i class="fa-solid fa-quote-right"></i>
-              - <em><%= User.find(rand_review.user_id).first_name %></em>
-            <% end %>
-          </p>
+          <div class="review-favorite-btn">
+            <p id="card-review">
+              <% unless activity.reviews.empty? %>
+                <i class="fa-solid fa-quote-left"></i> <%= rand_review.content %> <i class="fa-solid fa-quote-right"></i>
+                - <em><%= User.find(rand_review.user_id).first_name %></em>
+              <% end %>
+            </p>
 
-          <!--Display favourite heart-->
-          <% if user_signed_in? %>
-            <div class="card-favourite" id="card-favourite" data-controller="favourite">
-              <% if activity.favourite.nil? %>
-                <%= link_to(activity_favourites_path(activity), data: { turbo_method: "POST" }, activity: activity.id) do %>
-                  <i class="fa-regular fa-heart" data-action="click->favourite#addToFavourites" data-favourite-target="heart"></i>
-                <% end %>
-              <% else %>
-                <% if current_user.favourites.ids.include?(activity.favourite.id) %>
-                  <%= link_to(activity_favourite_path(id: Favourite.where(user_id: current_user.id, favouritable_id: activity.id).first.id, activity_id: activity), data: { turbo_method: "DELETE" }, activity: activity.id) do %>
-                    <i class="fa-solid fa-heart" data-action="click->favourite#addToFavourites" data-favourite-target="heart"></i>
-                  <% end %>
-                <% else %>
+            <!--Display favourite heart-->
+            <% if user_signed_in? %>
+              <div class="card-favourite" id="card-favourite" data-controller="favourite">
+                <% if activity.favourite.nil? %>
                   <%= link_to(activity_favourites_path(activity), data: { turbo_method: "POST" }, activity: activity.id) do %>
                     <i class="fa-regular fa-heart" data-action="click->favourite#addToFavourites" data-favourite-target="heart"></i>
                   <% end %>
+                <% else %>
+                  <% if current_user.favourites.ids.include?(activity.favourite.id) %>
+                    <%= link_to(activity_favourite_path(id: Favourite.where(user_id: current_user.id, favouritable_id: activity.id).first.id, activity_id: activity), data: { turbo_method: "DELETE" }, activity: activity.id) do %>
+                      <i class="fa-solid fa-heart" data-action="click->favourite#addToFavourites" data-favourite-target="heart"></i>
+                    <% end %>
+                  <% else %>
+                    <%= link_to(activity_favourites_path(activity), data: { turbo_method: "POST" }, activity: activity.id) do %>
+                      <i class="fa-regular fa-heart" data-action="click->favourite#addToFavourites" data-favourite-target="heart"></i>
+                    <% end %>
+                  <% end %>
                 <% end %>
-              <% end %>
-            </div>
-          <% else %>
-            <p>Sign in to <strong>add to favourites</strong></p>
-          <% end %>
-
+              </div>
+            <% else %>
+              <p>Sign in to <strong>add to favourites</strong></p>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>
