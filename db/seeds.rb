@@ -103,7 +103,7 @@ p "creating reviews"
   ]
   park_review = Review.create!(
     content: random_park_reviews.sample,
-    rating: rand(5..10),
+    rating: rand(2..5),
     user_id: User.ids.sample,
     activity_id: random_park.id
   )
@@ -130,7 +130,7 @@ p "creating reviews"
   ]
   restaurant_review = Review.create!(
     content: random_restaurant_reviews.sample,
-    rating: rand(5..10),
+    rating: rand(2..5),
     user_id: User.ids.sample,
     activity_id: random_restaurant.id
   )
@@ -157,7 +157,7 @@ p "creating reviews"
   ]
   bin_review = Review.create!(
     content: random_bin_reviews.sample,
-    rating: rand(5..10),
+    rating: rand(2..5),
     user_id: User.ids.sample,
     activity_id: random_bin.id
   )
