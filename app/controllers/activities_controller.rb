@@ -2,49 +2,39 @@ class ActivitiesController < ApplicationController
   skip_before_action :authenticate_user!, only: :index
 
   def index
-    # find activities from search params
-    if params[:category].present?
-      # filter if park feature specified
-      if params[:feature].present?
-        # show all
-        if params[:feature] == "all"
-          @activities = Activity.search_by_category(params[:category])
-        # filter if restaurant_type specified
-        else
-          @activities = Activity.search_by_category(params[:category]).where(park_feature: params[:feature])
-        end
-      elsif params[:restaurant_type].present?
-        # show all
-        if params[:restaurant_type] == "all"
-          @activities = Activity.search_by_category(params[:category])
-        # filter if restaurant_type specified
-        else
-          @activities = Activity.search_by_category(params[:category]).where(restaurant_type: params[:restaurant_type])
-        end
-      # else bins
-      else
-        @activities = Activity.search_by_category(params[:category])
-      end
-    else
-      @activities = Activity.all
+
+    # locate activities near user
+    locations = Location.near(current_user.location, params[:range]).where(locatable_type: "Activity")
+
+    # convert list to active relation and search by category
+    @activities = Activity.where(id: locations.map(&:id)).search_by_category(params[:category])
+
+    # filter by park feature
+    if params[:park_feature].present?
+      @activities = @activities.where(park_feature: params[:park_feature]) unless params[:park_feature] == "all"
     end
-    # default to all Activities if search leads to no results
+
+    # filter by restaurant type
+    if params[:restaurant_type].present?
+      @activities = @activities.where(restaurant_type: params[:restaurant_type]) unless params[:restaurant_type] == "all"
+    end
+
+    # default: if search results are empty
     if @activities.empty? || @activities.nil?
-      @activities = Activity.all
-      flash[:notice] = "No activities of selected category found. Showing all activities."
+      @activities = Activity.all.search_by_category(params[:category])
+      flash[:notice] = "No matches found - showing all activities"
     end
-    @markers = @activities.map do |a|
-      {
-        lat: a.location.latitude,
-        lng: a.location.longitude,
-        info_window: render_to_string(partial: "shared/info_window", locals: { activity: a })
-      }
-    end
+
+    # map markers
+    @markers = mapbox_markers(@activities)
+    @usermarker = {
+      lat: current_user.location.latitude,
+      lng: current_user.location.longitude
+    }
   end
 
   def new
     @activity = Activity.new()
-    @user = current_user
   end
 
   def create
@@ -64,6 +54,18 @@ class ActivitiesController < ApplicationController
   end
 
   private
+
+  def mapbox_markers(activities)
+    markers = activities.map do |a|
+      {
+        lat: a.location.latitude,
+        lng: a.location.longitude,
+        info_window: render_to_string(partial: "shared/info_window", locals: { activity: a })
+      }
+    end
+
+    return markers
+  end
 
   def activity_params
     params.require(:activity).permit(:name, :description, :category, :restaurant_type, :park_feature)

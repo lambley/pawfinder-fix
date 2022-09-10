@@ -25,17 +25,18 @@
   font-family: $body-font;
   padding-top: 4px;
 }
-
-.mapboxgl-popup-close-button{
-  color: $white;
-  font-size: 30px;
-  font-weight: 500;
-}
-
 .popup-window{
   max-width: 100%;
 }
 
 .map-fit-markers {
   z-index: 99999;
+}
+
+.mapboxgl-popup-close-button {
+  color: white;
+  font-size: xx-large;
+  padding-top: 12px;
+  padding-right: 12px;
+  border: none;
 }
