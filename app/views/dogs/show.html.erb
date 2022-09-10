@@ -3,16 +3,11 @@
     <div class="dog-avatar">
       <h1><%= cl_image_tag(@dog.cl_tag, {class: 'dog-avatar'}) %></h1>
     </div>
-    <div class="dog-info">
+    <div class="dog-info d-flex">
       <h1 id="dog-info-weight1"><%= @dog.name %></h1>
       <h2 id="dog-info-weight2"><%= @dog.breed %></h2>
       <h4 class="dog-info-weight3"><%= @dog.age %>yrs, <%= @dog.colour %></h4>
-      </br>
-      </br>
-      <div>
-        <button type="button" class="btn btn-primary">Contact Owner</button>
-        <button type="button" class="btn btn-success text-center">♡</button>
-      </div>
+      <button type="button" class="btn btn-success text-center">♡</button>
     </div>
   </div>
   </br>
@@ -21,21 +16,24 @@
     <div class="dog-card">
       <h2><%= cl_image_tag("PawFinder/Assets/clear-logo", width: 100, height: 100) %>About:</h2>
       <p class="dog-bio"><%= @dog.biography %></p>
-       <div class="about-info">
-        <h4>House Trained?</h4>
-        <h4>Microchipped?</h4>
-        <h4>Spayed/Neutered?</h4>
-        <h4>Child Friendly?</h4>
-        <h4>Dog Friendly?</h4>
-        <h4>Cat Friendly?</h4>
-      </div>
-      <div class="about-answers">
-        <p>Yes</p>
-        <p>Yes</p>
-        <p>Yes</p>
-        <p>Yes</p>
-        <p>Yes</p>
-        <p>Yes</p>
+      <div class="d-flex flex-column">
+        <ul class="justify-content-around">
+          <li>House Trained?</li>
+          <li>Microchipped?</li>
+          <li>Spayed/Neutered?</li>
+          <li>Child Friendly?</li>
+          <li>Dog Friendly?</li>
+          <li>Cat Friendly?</li>
+        </ul>
+
+        <ul class="justify-content-around">
+          <li>Yes</li>
+          <li>Yes</li>
+          <li>Yes</li>
+          <li>Yes</li>
+          <li>Yes</li>
+          <li>Yes</li>
+        </ul>
       </div>
     </div>
   </div>
