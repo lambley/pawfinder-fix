@@ -23,9 +23,9 @@
                   <i class="fa-solid fa-heart"></i>
                 <% end %>
               <% else %>
-              <%= link_to(dog_favourites_path(dog), data: { turbo_method: "POST" }, dog: dog.id) do %>
-                <i class="fa-regular fa-heart" data-action="click->favourite#addToFavourites" data-favourite-target="heart"></i>
-              <% end %>
+                <%= link_to(dog_favourites_path(dog), data: { turbo_method: "POST" }, dog: dog.id) do %>
+                  <i class="fa-regular fa-heart" data-action="click->favourite#addToFavourites" data-favourite-target="heart"></i>
+                <% end %>
               <% end %>
             <% end %>
           </div>

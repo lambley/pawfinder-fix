@@ -5,7 +5,6 @@ export default class extends Controller {
   static targets = [ "heart" ]
 
   connect() {
-    console.log("fav connected");
   }
 
   addToFavourites() {
