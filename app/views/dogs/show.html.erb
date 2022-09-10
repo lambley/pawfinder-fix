@@ -1,7 +1,7 @@
 <div class="dog-main">
   <div class="dog-top-profile">
     <%= cl_image_tag(@dog.cl_tag, {class: 'dog-avatar'}) %>
-    <%= link_to '#' %>
+    <%= link_to '#' do %>
       <%= cl_image_tag(@dog.user.cl_tag, class: 'owner-avatar') %>
     <% end %>
   </div>
