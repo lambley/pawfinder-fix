@@ -29,9 +29,9 @@ export default class extends Controller {
         .addTo(this.map)
     })
     // user map marker
-    new mapboxgl.Marker({
-      color: '#04985A'
-    })
+    const el = document.createElement('div')
+    el.className = "user-marker"
+    new mapboxgl.Marker(el)
     .setLngLat([ this.usermarkerValue.lng, this.usermarkerValue.lat ])
     .addTo(this.map)
   }
