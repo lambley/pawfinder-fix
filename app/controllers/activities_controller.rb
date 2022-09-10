@@ -6,21 +6,10 @@ class ActivitiesController < ApplicationController
     if params[:category].present?
       # filter if park feature specified
       if params[:feature].present?
-        # show all
-        if params[:feature] == "all"
-          @activities = Activity.search_by_category(params[:category])
-        # filter if restaurant_type specified
-        else
-          @activities = Activity.search_by_category(params[:category]).where(park_feature: params[:feature])
-        end
+        @activities = park_search(params[:feature], params[:category])
+      # filter if restaurant_type specified
       elsif params[:restaurant_type].present?
-        # show all
-        if params[:restaurant_type] == "all"
-          @activities = Activity.search_by_category(params[:category])
-        # filter if restaurant_type specified
-        else
-          @activities = Activity.search_by_category(params[:category]).where(restaurant_type: params[:restaurant_type])
-        end
+        @activities = restaurant_search(params[:restaurant_type], params[:category])
       # else bins
       else
         @activities = Activity.search_by_category(params[:category])
@@ -33,13 +22,7 @@ class ActivitiesController < ApplicationController
       @activities = Activity.all
       flash[:notice] = "No activities of selected category found. Showing all activities."
     end
-    @markers = @activities.map do |a|
-      {
-        lat: a.location.latitude,
-        lng: a.location.longitude,
-        info_window: render_to_string(partial: "shared/info_window", locals: { activity: a })
-      }
-    end
+    @markers = mapbox_markers(@activities)
   end
 
   def new
@@ -64,6 +47,38 @@ class ActivitiesController < ApplicationController
   end
 
   private
+
+  def park_search(park_feature, category)
+    if park_feature == "all"
+      activities = Activity.search_by_category(category)
+    else
+      activities = Activity.search_by_category(category).where(park_feature:)
+    end
+
+    return activities
+  end
+
+  def restaurant_search(restaurant_type, category)
+    if restaurant_type == "all"
+      activities = Activity.search_by_category(category)
+    else
+      activities = Activity.search_by_category(category).where(restaurant_type:)
+    end
+
+    return activities
+  end
+
+  def mapbox_markers(activities)
+    markers = activities.map do |a|
+      {
+        lat: a.location.latitude,
+        lng: a.location.longitude,
+        info_window: render_to_string(partial: "shared/info_window", locals: { activity: a })
+      }
+    end
+
+    return markers
+  end
 
   def activity_params
     params.require(:activity).permit(:name, :description, :category, :restaurant_type, :park_feature)
