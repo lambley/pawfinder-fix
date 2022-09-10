@@ -26,6 +26,12 @@
   padding-top: 4px;
 }
 
+.mapboxgl-popup-close-button{
+  color: $white;
+  font-size: 30px;
+  font-weight: 500;
+}
+
 .popup-window{
   max-width: 100%;
 }
