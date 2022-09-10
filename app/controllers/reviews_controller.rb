@@ -7,7 +7,7 @@ class ReviewsController < ApplicationController
   end
 
   def new
-    @review = Review.new()
+    @review = Review.new
     @user = current_user
     # @activity = Activity.find(params[:activity_id])
   end
@@ -20,8 +20,10 @@ class ReviewsController < ApplicationController
       flash[:notice] = "Review created successfully."
       redirect_to activities_path, status: :see_other
     else
+      render :new
       flash[:alert] = "Something went wrong."
-      redirect_to new_activity_review_path, status: :unprocessable_entity
+      # redirect_to activities_path, status: :unprocessable_entity
+
     end
   end
 
