@@ -75,6 +75,7 @@
   border: 1px solid #E6E8EB;
   box-shadow: 1px 1px 4px 1px rgba(0, 0, 0, 0.25);
   border-radius: 8px;
+  position: sticky;
 }
 .dog-card h2{
     width: 225px;
@@ -82,13 +83,6 @@
 .dog-card p{
     padding-top: 20px;
     width: 1200px;
-  }
-.dog-card h4{
-    padding-top: 10px;
-    padding-right: 20px;
-    padding-left: 20px;
-    padding-bottom: 10px;
-    // width: 200px;
   }
 
 .about-info{
@@ -107,4 +101,9 @@
   padding-bottom: 20px;
   width: 225px;
   text-decoration: underline;
+}
+
+ul {
+  display: inline-flex;
+list-style-type: none;
 }
