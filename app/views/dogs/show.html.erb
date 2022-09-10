@@ -8,10 +8,24 @@
       <h2 id="dog-info-weight2"><%= @dog.breed %></h2>
       <h4 class="dog-info-weight3"><%= @dog.age %>yrs, <%= @dog.colour %></h4>
       </br>
-      </br>
       <div>
-        <button type="button" class="btn btn-primary">Contact Owner</button>
-        <button type="button" class="btn btn-success text-center">♡</button>
+        <div class="card-favourite" id="dog-card-favourite" data-controller="favourite">
+          <% if @dog.favourite.nil? %>
+            <%= link_to(dog_favourites_path(@dog), data: { turbo_method: "POST" }, dog: @dog.id) do %>
+              <i class="fa-regular fa-heart" data-action="click->favourite#addToFavourites" data-favourite-target="heart"></i>
+            <% end %>
+          <% else %>
+            <% if current_user.favourites.ids.include?(@dog.favourite.id) %>
+              <%= link_to(dog_favourite_path(id: Favourite.where(user_id: current_user.id, favouritable_id: @dog.id).first.id, dog_id: @dog), data: { turbo_method: "DELETE" }, dog: @dog.id) do %>
+                <i class="fa-solid fa-heart" data-action="click->favourite#addToFavourites" data-favourite-target="heart"></i>
+              <% end %>
+            <% else %>
+              <%= link_to(dog_favourites_path(@dog), data: { turbo_method: "POST" }, dog: @dog.id) do %>
+                <i class="fa-regular fa-heart" data-action="click->favourite#addToFavourites" data-favourite-target="heart"></i>
+              <% end %>
+            <% end %>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
