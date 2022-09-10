@@ -33,3 +33,11 @@
 .map-fit-markers {
   z-index: 99999;
 }
+
+.mapboxgl-popup-close-button {
+  color: white;
+  font-size: xx-large;
+  padding-top: 12px;
+  padding-right: 12px;
+  border: none;
+}
