@@ -9,8 +9,16 @@ class PagesController < ApplicationController
     @user = current_user
   end
 
+  def private_profile
+    @user = Dog.find(params[:dog_id]).user
+  end
+
   def profile_reviews
-    @user = current_user
+    if params[:dog_id].present?
+      @user = Dog.find(params[:dog_id]).user
+    else
+      @user = current_user
+    end
     @reviews = @user.reviews
   end
 
