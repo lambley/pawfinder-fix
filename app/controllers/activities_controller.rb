@@ -2,13 +2,15 @@ class ActivitiesController < ApplicationController
   skip_before_action :authenticate_user!, only: :index
 
   def index
+    if user_signed_in?
+      # locate activities near user
+      locations = Location.near(current_user.location, params[:range]).where(locatable_type: "Activity")
 
-    # locate activities near user
-    locations = Location.near(current_user.location, params[:range]).where(locatable_type: "Activity")
-
-    # convert list to active relation and search by category
-    @activities = Activity.where(id: locations.map(&:id)).search_by_category(params[:category])
-
+      # convert list to active relation and search by category
+      @activities = Activity.where(id: locations.map(&:id)).search_by_category(params[:category])
+    else
+      @activities = Activity.all
+    end
     # filter by park feature
     if params[:park_feature].present?
       @activities = @activities.where(park_feature: params[:park_feature]) unless params[:park_feature] == "all"
@@ -30,7 +32,7 @@ class ActivitiesController < ApplicationController
     @usermarker = {
       lat: current_user.location.latitude,
       lng: current_user.location.longitude
-    }
+    } unless !user_signed_in?
   end
 
   def new
