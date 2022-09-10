@@ -1,109 +1,77 @@
-.dog-top-profile{
-  padding-top: 80px;
+.dog-main {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.dog-top-profile {
   display: flex;
   justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  flex-direction: row;
+  margin-top: 32px;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
 }
 
 .dog-avatar {
-  width: 300px;
-  border-radius: 10%;
-  filter: drop-shadow(2px 2px 2px rgb(200, 200, 200));
-}
-
-.dog-info{
-  flex-direction: column;
-  padding-left: 25px;
-  padding-top: 85px;
-  color: #404347;
-}
-
-#dog-info-weight1{
-  font-weight: 700;
-}
-
-#dog-info-weight2{
-  font-weight: 400;
-}
-
-.dog-info-weight3{
-  font-weight: 100;
-  color: #7b7f85;
-}
-
-.btn-primary{
-  background: #2E67D1;
-  border-color: #2E67D1;
-  border-radius: 12px;
-  height: 30px;
-  width: 150px;
-  line-height: 3px;
-  color: $white;
-  filter: drop-shadow(2px 2px 2px rgb(200, 200, 200));
-  &:hover {
-    box-shadow: 1px 1px 4px 1px rgba(0, 0, 0, 0.25);
-    background: $green;
-  }
-}
-
-.btn-success{
-  background: #2E67D1;
-  border-color: #2E67D1;
-  border-radius: 12px;
-  height: 30px;
-  width: 40px;
-  line-height: 1px;
-  text-align: center;
-  color: $white;
-  filter: drop-shadow(2px 2px 2px rgb(200, 200, 200));
-  &:hover {
-    box-shadow: 1px 1px 4px 1px rgba(0, 0, 0, 0.25);
-    background: $green;
-  }
-}
-
-.dog-card{
-  padding: 30px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin: 28px;
-  margin-left: 100px;
-  margin-right: 100px;
-  width: fit-content;
-  height: 315px;
-  background: #FFFFFF;
-  border: 1px solid #E6E8EB;
-  box-shadow: 1px 1px 4px 1px rgba(0, 0, 0, 0.25);
   border-radius: 8px;
-  position: sticky;
+  box-shadow: 1px 1px 5px 1px #80808040;
+  max-width: 100%;
+  max-height: 100%;
+  position: relative;
 }
-.dog-card h2{
-    width: 225px;
+
+.owner-avatar {
+  border-radius: 50%;
+  height: 70px;
+  width: 70px;
+  position: absolute;
+  right: -8px;
+  bottom: -8px;
+  box-shadow: 1px 1px 3px 1px #00000045;
+  object-fit: cover;
+  border: 3px solid white;
+}
+
+.dog-info {
+  padding-bottom: 16px;
+  h1 {
+    font-size: xx-large;
   }
-.dog-card p{
-    padding-top: 20px;
-    width: 1200px;
+  h2 {
+    font-size: large;
+    color: $gray;
   }
+}
 
-.about-info{
+.dog-about {
+  width: 50%;
+  margin-left: auto;
+  background-color: #FFFFFF;
+  margin-right: auto;
+  margin-top: 32px;
+  border-radius: 8px;
+  padding: 16px;
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
 }
 
-.about-answers{
+.dog-info-checklist {
+  color: $black;
+  i {
+    color: $green;
+  }
   display: flex;
-  justify-content: space-between;
-}
-
-.about-answers p{
-  padding-right: 60px;
-  padding-left: 100px;
-  padding-bottom: 20px;
-  width: 225px;
-  text-decoration: underline;
-}
-
-ul {
-  display: inline-flex;
-list-style-type: none;
+  flex-direction: column;
+  align-items: center;
 }

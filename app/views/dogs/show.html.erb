@@ -1,42 +1,23 @@
 <div class="dog-main">
   <div class="dog-top-profile">
-    <div class="dog-avatar">
-      <h1><%= cl_image_tag(@dog.cl_tag, {class: 'dog-avatar'}) %></h1>
-    </div>
-    <div class="dog-info">
-      <h1 id="dog-info-weight1"><%= @dog.name %></h1>
-      <h2 id="dog-info-weight2"><%= @dog.breed %></h2>
-      <h4 class="dog-info-weight3"><%= @dog.age %>yrs, <%= @dog.colour %></h4>
-      </br>
-      </br>
-      <div>
-        <button type="button" class="btn btn-primary">Contact Owner</button>
-        <button type="button" class="btn btn-success text-center">♡</button>
-      </div>
-    </div>
+    <%= cl_image_tag(@dog.cl_tag, {class: 'dog-avatar'}) %>
+    <%= link_to '#' %>
+      <%= cl_image_tag(@dog.user.cl_tag, class: 'owner-avatar') %>
+    <% end %>
   </div>
-  </br>
-  </br>
   <div class="dog-about">
-    <div class="dog-card">
-      <h2><%= cl_image_tag("PawFinder/Assets/clear-logo", width: 100, height: 100) %>About:</h2>
-      <p class="dog-bio"><%= @dog.biography %></p>
-       <div class="about-info">
-        <h4>House Trained?</h4>
-        <h4>Microchipped?</h4>
-        <h4>Spayed/Neutered?</h4>
-        <h4>Child Friendly?</h4>
-        <h4>Dog Friendly?</h4>
-        <h4>Cat Friendly?</h4>
-      </div>
-      <div class="about-answers">
-        <p>Yes</p>
-        <p>Yes</p>
-        <p>Yes</p>
-        <p>Yes</p>
-        <p>Yes</p>
-        <p>Yes</p>
-      </div>
+    <h2>About <%= @dog.name.capitalize %></h2>
+    <div class="dog-info">
+      <h2><%= @dog.breed %>, <%= @dog.colour.capitalize %>, <%= @dog.age %> years old</h2>
+    </div>
+    <p><%= @dog.biography %></p>
+    <div class="dog-info-checklist">
+      <p>Spayed/Neutered? <i class="fa-solid fa-check"></i></p>
+      <p>Microchipped? <i class="fa-solid fa-check"></i></p>
+      <p>House Trained? <i class="fa-solid fa-check"></i></p>
+      <p>Friendly with Dogs? <i class="fa-solid fa-check"></i></p>
+      <p>Friendly with Cats? <i class="fa-solid fa-check"></i></p>
+      <p>Friendly with Children? <i class="fa-solid fa-check"></i></p>
     </div>
   </div>
 </div>
