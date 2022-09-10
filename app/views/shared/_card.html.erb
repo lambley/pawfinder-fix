@@ -4,7 +4,7 @@
       <div class="col-md-4">
 
         <%= cl_image_tag(activity.cl_tag, :format => :png, class: "card-img", transformation:[ {width: 245, height: 200, crop: "crop", gravity:"auto", quality: "auto"},
-{radius: "25:0:0:25"} ] ) %>
+{radius: "20:0:0:20"} ] ) %>
 
       </div>
       <div class="col-md-8">
@@ -13,7 +13,7 @@
 
           <!-- display different card info based on category -->
           <% if activity.category == "restaurant" %>
-            <h5 class="card-activity-info"><%= activity.restaurant_type %></h5>
+            <h5 class="card-activity-info"><%= activity.restaurant_type.capitalize %></h5>
           <% elsif activity.category == "park" %>
             <h5 class="card-activity-info"><%= activity.park_feature.capitalize %></h5>
           <% end %>
