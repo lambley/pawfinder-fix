@@ -19,4 +19,5 @@ Rails.application.routes.draw do
   end
   resources :activities, only: %i[index new create]
   resources :locations, only: %i[index new create]
+  resources :users, only: %i[show edit update]
 end
