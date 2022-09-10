@@ -3,9 +3,9 @@
   <div class="profile-column pt-3">
 
     <div class="profile-card profile-favourites">
-      <h2><%= current_user.first_name.capitalize %>'s Favourites</h2>
+      <h2><%= @user.first_name.capitalize %>'s Favourites</h2>
       <div class="profile-favourites-cards">
-        <% current_user.favourites.sort.reverse.each do |favourite| %>
+        <% @user.favourites.sort.reverse.each do |favourite| %>
           <% if favourite.favouritable_type == "Activity" %>
             <%= render "shared/profile_favourites", activity: Activity.find(favourite.favouritable_id) %>
           <% elsif favourite.favouritable_type == "Dog" %>
@@ -19,15 +19,14 @@
 
   <div class="profile-column pt-3">
     <div class="profile-card">
-      <%= cl_image_tag(current_user.cl_tag, crop: :thumb, gravity: :face, class: "profile-card-avatar") %>
+      <%= cl_image_tag(@user.cl_tag, crop: :thumb, gravity: :face, class: "profile-card-avatar") %>
       <div class="profile-card-info">
-        <h2><%= current_user.name %></h2>
-        <p><%= current_user.location.address %></p>
-        <small><%= current_user.biography %></small>
-        <p><%= link_to "Your reviews", profile_reviews_path, user: "yes" %></p>
+        <h2><%= @user.name %></h2>
+        <p><%= @user.location.address %></p>
+        <small><%= @user.biography %></small>
       </div>
     </div>
-    <% current_user.dogs.each do |dog| %>
+    <% @user.dogs.each do |dog| %>
       <%= render "shared/profile_dogs", dog: dog %>
     <% end %>
   </div>

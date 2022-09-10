@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   end
   resources :dogs, only: %i[index show new create] do
     resources :favourites, only: %i[create destroy]
+    get "/owner", to: "pages#private_profile"
   end
   resources :activities, only: %i[index new create]
   resources :locations, only: %i[index new create]
