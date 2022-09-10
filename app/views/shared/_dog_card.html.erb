@@ -2,17 +2,18 @@
   <div class="card mb-3">
     <div class="row g-0">
       <div class="col-md-4">
-        <%= cl_image_tag(dog.cl_tag, width: 150, height: 150, class: "img-fluid rounded-start") %>
+        <%= cl_image_tag(dog.cl_tag, :format => :png, class: "card-img", transformation:[ {width: 245, height: 200, crop: "fill", gravity:"face", quality: "auto"},
+{radius: "25:0:0:25"} ] ) %>
       </div>
       <div class="col-md-8">
         <div class="card-body">
           <%= link_to dog_path(dog) do %>
-            <h5 class="card-title"><%= dog.name %></h5>
+            <h4 class="card-title"><%= dog.name %></h4>
           <% end %>
-          <p class="card-text"><%= dog.breed %> | <%= dog.colour %> | <%= dog.age %> years old</p>
+          <h5 class="card-text"><%= dog.breed %> | <%= dog.colour %> | <%= dog.age %> years old</h5>
           <p class="card-text"><%= dog.biography %></p>
           <!--Display favourite heart-->
-          <div class="dog-card-favourite" id="dog-card-favourite" data-controller="favourite">
+          <div class="card-favourite" id="dog-card-favourite" data-controller="favourite">
             <% if dog.favourite.nil? %>
               <%= link_to(dog_favourites_path(dog), data: { turbo_method: "POST" }, dog: dog.id) do %>
                 <i class="fa-regular fa-heart" data-action="click->favourite#addToFavourites" data-favourite-target="heart"></i>
