@@ -33,6 +33,12 @@ class ActivitiesController < ApplicationController
       lat: current_user.location.latitude,
       lng: current_user.location.longitude
     } unless !user_signed_in?
+    if @usermarker.nil? || @usermarker.empty?
+      @usermarker = {
+        lat: 51.5,
+        lng: 0
+      }
+    end
   end
 
   def new
