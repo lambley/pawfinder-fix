@@ -5,6 +5,19 @@ class PagesController < ApplicationController
     @activities = Activity.all
   end
 
+  def directions
+    @usermarker = {
+      lat: current_user.location.latitude,
+      lng: current_user.location.longitude
+    }
+    activity = Activity.find(params[:activity_id])
+    @destination = {
+      lat: activity.location.latitude,
+      lng: activity.location.longitude,
+      info_window: render_to_string(partial: "shared/info_window", locals: { activity: })
+    }
+  end
+
   def profile
     @user = current_user
   end

@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   resources :activities, only: %i[index new create] do
     resources :reviews, only: %i[index new create edit update]
     resources :favourites, only: %i[create destroy]
+    get "/directions", to: "pages#directions"
   end
   resources :dogs, only: %i[index show new create] do
     resources :favourites, only: %i[create destroy]
