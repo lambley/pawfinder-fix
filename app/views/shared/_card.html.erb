@@ -33,7 +33,9 @@
               - <em><%= User.find(rand_review.user_id).first_name %></em>
             <% end %>
           </p>
-
+          <%= link_to activity_directions_path(activity) do %>
+            <p>Get Directions</p>
+          <% end %>
           <!--Display favourite heart-->
           <% if user_signed_in? %>
             <div class="card-favourite" id="card-favourite" data-controller="favourite">
