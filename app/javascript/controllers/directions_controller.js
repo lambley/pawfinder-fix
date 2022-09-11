@@ -10,9 +10,6 @@ export default class extends Controller {
     usermarker: Object
   }
   connect() {
-    // insert directions
-    this.#openRouteServiceRoute()
-
     // render mapbox
     mapboxgl.accessToken = this.mapboxApiKeyValue
     this.map = new mapboxgl.Map({
@@ -22,6 +19,26 @@ export default class extends Controller {
     this.#addMarkersToMap()
     this.#fitMapToMarkers()
     this.map.addControl(new mapboxgl.NavigationControl());
+
+    // insert directions
+    this.#openRouteServiceRoute()
+  }
+
+  addRouteToMap(geo) {
+    this.map.addSource('route', geo)
+    this.map.addLayer({
+      'id': 'route',
+      'type': 'line',
+      'source': 'route',
+      'layout': {
+      'line-join': 'round',
+      'line-cap': 'round'
+      },
+      'paint': {
+      'line-color': '#888',
+      'line-width': 8
+      }
+    });
   }
 
   #openRouteServiceRoute() {
@@ -42,7 +59,9 @@ export default class extends Controller {
         }
       })
       const data = await response.json()
-      console.log(data);
+      // console.log(data);
+
+      // use step info and insert into page
       const steps = data.features[0].properties.segments[0].steps
       steps.forEach((step) => {
         const stepListItem = `<li>
@@ -50,6 +69,9 @@ export default class extends Controller {
         </li>`
         directionsElement.insertAdjacentHTML("beforeend", stepListItem)
       })
+      
+      // use geoJSON data to plot route on mapbox map
+      this.addRouteToMap(data)
     }
 
     // call API
