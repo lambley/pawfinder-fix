@@ -8,11 +8,14 @@
 }
 
 #directions-content-here {
-  height: 80vh;
+  height: 74vh;
   overflow: scroll;
 }
 
 .directions-content {
+  h1 {
+    text-align: -webkit-center;
+  }
   width: 40%;
 }
 
