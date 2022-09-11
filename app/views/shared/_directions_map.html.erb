@@ -1,0 +1,8 @@
+<div class="directions-map-container" id="directions-map"
+  data-controller="directions"
+  data-directions-destination-value="<%= @destination.to_json %>"
+  data-directions-usermarker-value="<%= @usermarker.to_json %>"
+  data-directions-ors-api-key-value="<%= ENV['OPENROUTESERVICE_API_KEY'] %>"
+  data-directions-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
+   >
+</div>
