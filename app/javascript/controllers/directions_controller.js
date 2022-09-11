@@ -46,10 +46,7 @@ export default class extends Controller {
       const steps = data.features[0].properties.segments[0].steps
       steps.forEach((step) => {
         const stepListItem = `<li>
-          To: ${step.name},
-          distance: ${step.distance}m,
-          duration: ${step.duration}s -
-          ${step.instruction}
+          <strong>${step.instruction}</strong> (for ${Math.ceil(step.distance)}m)
         </li>`
         directionsElement.insertAdjacentHTML("beforeend", stepListItem)
       })

@@ -7,6 +7,11 @@
   align-items: flex-start;
 }
 
+#directions-content-here {
+  height: 80vh;
+  overflow: scroll;
+}
+
 .directions-content {
   width: 40%;
 }
