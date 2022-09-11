@@ -60,8 +60,10 @@ export default class extends Controller {
     // destination map marker
     const destEl = document.createElement('div')
     destEl.className = "dest-marker"
+    const popup = new mapboxgl.Popup({ className: 'popup-window' }).setHTML(this.destinationValue.info_window)
     new mapboxgl.Marker(destEl)
       .setLngLat([ this.destinationValue.lng, this.destinationValue.lat ])
+      .setPopup(popup)
       .addTo(this.map)
     // user map marker
     const userEl = document.createElement('div')
