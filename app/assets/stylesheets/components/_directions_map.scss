@@ -1,6 +1,16 @@
-.directions-map {
+.directions-container {
   margin: 8px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  align-items: flex-start;
 }
+
+.directions-content {
+  width: 40%;
+}
+
 .directions-map-container {
   height: 80vh;
   width: 100%;

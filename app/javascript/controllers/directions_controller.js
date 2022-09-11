@@ -10,8 +10,8 @@ export default class extends Controller {
     usermarker: Object
   }
   connect() {
-    // get route from Open Route Service
-    console.log(this.#openRouteServiceRoute());
+    // insert directions
+    this.#openRouteServiceRoute()
 
     // render mapbox
     mapboxgl.accessToken = this.mapboxApiKeyValue
@@ -29,6 +29,10 @@ export default class extends Controller {
     // build url
     const url = `https://api.openrouteservice.org/v2/directions/foot-walking?api_key=${this.orsApiKeyValue}&start=${this.usermarkerValue.lng},${this.usermarkerValue.lat}&end=${this.destinationValue.lng},${this.destinationValue.lat}`
 
+    // element to insert directions into list
+    const directionsElement = document.getElementById('directions-content-here')
+
+    // API call and list generation
     async function fetchRoute() {
       const response = await fetch(url, {
         method: 'GET',
@@ -38,9 +42,21 @@ export default class extends Controller {
         }
       })
       const data = await response.json()
-      return data.features[0]
+      console.log(data);
+      const steps = data.features[0].properties.segments[0].steps
+      steps.forEach((step) => {
+        const stepListItem = `<li>
+          To: ${step.name},
+          distance: ${step.distance}m,
+          duration: ${step.duration}s -
+          ${step.instruction}
+        </li>`
+        directionsElement.insertAdjacentHTML("beforeend", stepListItem)
+      })
     }
-    return fetchRoute()
+
+    // call API
+    fetchRoute()
   }
 
   #addMarkersToMap() {
