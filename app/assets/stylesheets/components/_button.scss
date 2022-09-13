@@ -12,6 +12,20 @@ body {
   border-radius: 8px;
 }
 
+.red-button {
+  background-color: #D9534F;
+  color: white;
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  transition: 0.3s;
+  &:hover {
+      background-color: #e44943fe;
+      color: white;
+      box-shadow: 1px 1px 5px 1px #0000002e;
+  }
+}
+
 .button-margin-top {
   margin-top: 8px;
 }
