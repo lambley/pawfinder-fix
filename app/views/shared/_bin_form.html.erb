@@ -11,11 +11,9 @@
     </div>
   </div>
   <div class="search-bottom">
-    <div class="search-checkbox">
+    
     <!-- checkbox-->
-    <%= form.check_box :meet_dogs %>
-    <%= form.label :meet_dogs, "want to meet other dogs?" %>
-    </div>
+
     <!-- submit-->
     <%= form.submit "Submit", class: "search-submit"%>
     <%= hidden_field_tag(:category, 'dog bin') %>
