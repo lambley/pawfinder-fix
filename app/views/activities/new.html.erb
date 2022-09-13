@@ -1,4 +1,4 @@
-<div class="container" style="width: 500px; margin-top: 160px" data-controller="new-activity">
+<div class="container devise-form-wrapper" style="width: 500px; margin-top: 160px" data-controller="new-activity">
   <div id="new-activity-selector">
     <h3>Select activity type to create</h3>
     <select name="activity" id="newActivitySelector" class="new-activity-selector" data-new-activity-target="select" data-action="change->new-activity#showForm">
@@ -11,7 +11,7 @@
 
   <div class="display-none" id="new-activity-form" data-new-activity-target="restaurantForm">
     <h3>Add new <em>Restaurant</em></h3>
-    <small><%= link_to "choose other activity", new_activity_path, class: "btn btn-danger round"%></small>
+    <small><%= link_to "choose other activity", new_activity_path, class: "btn btn-danger"%></small>
     <hr>
     <%= simple_form_for(@activity) do |f| %>
       <%= f.input :name, html5: true, label: "Name" %>
