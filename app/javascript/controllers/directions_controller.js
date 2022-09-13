@@ -24,23 +24,6 @@ export default class extends Controller {
     this.#openRouteServiceRoute()
   }
 
-  addRouteToMap(geo) {
-    this.map.addSource('route', geo)
-    this.map.addLayer({
-      'id': 'route',
-      'type': 'line',
-      'source': 'route',
-      'layout': {
-      'line-join': 'round',
-      'line-cap': 'round'
-      },
-      'paint': {
-      'line-color': '#888',
-      'line-width': 8
-      }
-    });
-  }
-
   #openRouteServiceRoute() {
     // Official documentation: https://openrouteservice.org/dev/#/api-docs/v2/directions/{profile}/get
     // build url
@@ -50,7 +33,7 @@ export default class extends Controller {
     const directionsElement = document.getElementById('directions-content-here')
 
     // API call and list generation
-    async function fetchRoute() {
+    async function fetchRoute(map) {
       const response = await fetch(url, {
         method: 'GET',
         headers: {
@@ -69,13 +52,29 @@ export default class extends Controller {
         </li>`
         directionsElement.insertAdjacentHTML("beforeend", stepListItem)
       })
-      
+
       // use geoJSON data to plot route on mapbox map
-      this.addRouteToMap(data)
+      map.addSource('route', {
+        'type': 'geojson',
+        'data': data
+      })
+      map.addLayer({
+        'id': 'route',
+        'type': 'line',
+        'source': 'route',
+        'layout': {
+          'line-join': 'round',
+          'line-cap': 'round'
+        },
+        'paint': {
+          'line-color': '#D9534F',
+          'line-width': 8
+          }
+      });
     }
 
     // call API
-    fetchRoute()
+    fetchRoute(this.map)
   }
 
   #addMarkersToMap() {
