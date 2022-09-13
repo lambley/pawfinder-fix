@@ -16,13 +16,11 @@
       </div>
     </div>
     <div class="search-bottom">
-      <div class="search-checkbox">
+
       <!-- checkbox-->
-      <%= form.check_box :meet_dogs %>
-      <%= form.label :meet_dogs, "want to meet other dogs?" %>
-      </div>
+
       <!-- submit-->
-      <%= form.submit "Submit", class: "search-submit"%>
+      <%= form.submit "Search", class: "search-submit"%>
     <% end %>
   <% else %>
     <h3 class="search-login-message">Please login to view dogs</h3>

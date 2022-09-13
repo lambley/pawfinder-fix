@@ -16,12 +16,10 @@
   </div>
   <div class="search-bottom">
     <!-- checkbox-->
-    <div class="search-checkbox">
-      <%= form.check_box :meet_dogs %>
-      <%= form.label :meet_dogs, "want to meet other dogs?" %>
-    </div>
+
+
     <!-- submit-->
-    <%= form.submit "Submit", class: "search-submit"%>
+    <%= form.submit "Search", class: "search-submit"%>
     <%= hidden_field_tag(:category, 'restaurant') %>
   <% end %>
   </div>
