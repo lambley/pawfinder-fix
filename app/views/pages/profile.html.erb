@@ -24,7 +24,7 @@
         <h2><%= current_user.name %></h2>
         <p><%= current_user.location.address %></p>
         <small><%= current_user.biography %></small>
-        <p><%= link_to "Your reviews", profile_reviews_path, user: "yes" %></p>
+        <div class="button-margin-top"><%= link_to "Your reviews", profile_reviews_path, user: "yes", class: "blue-button" %></div>
       </div>
     </div>
     <% current_user.dogs.each do |dog| %>
