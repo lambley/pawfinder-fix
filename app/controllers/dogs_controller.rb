@@ -16,7 +16,8 @@ class DogsController < ApplicationController
     end
     @usermarker = {
       lat: current_user.location.latitude,
-      lng: current_user.location.longitude
+      lng: current_user.location.longitude,
+      info_window: render_to_string(partial: "shared/info_window", locals: {activity: current_user})
     }
   end
 
