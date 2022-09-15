@@ -30,10 +30,12 @@ export default class extends Controller {
     })
     // user map marker
     const el = document.createElement('div')
+    const userPopup = new mapboxgl.Popup({ className: 'popup-window' }).setHTML(this.usermarkerValue.info_window)
     el.className = "user-marker"
     new mapboxgl.Marker(el)
-    .setLngLat([ this.usermarkerValue.lng, this.usermarkerValue.lat ])
-    .addTo(this.map)
+      .setLngLat([ this.usermarkerValue.lng, this.usermarkerValue.lat ])
+      .setPopup(userPopup)
+      .addTo(this.map)
   }
 
   #fitMapToMarkers() {
