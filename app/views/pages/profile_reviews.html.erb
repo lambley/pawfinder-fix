@@ -1,4 +1,4 @@
-<div class="review-index-container">
+<div class="container">
   <h1>Reviews by <em><%= @user.name.capitalize %></em></h1>
   <% @reviews.each do |review| %>
     <%= render "shared/review_card", review: review %>
