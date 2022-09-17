@@ -18,9 +18,7 @@
             <h5 class="card-activity-info"><%= activity.park_feature.capitalize %></h5>
           <% end %>
           <!--end-->
-          </br>
-          <p class="card-text"><%= activity.description %></p>
-          </br>
+          <p class="card-text card-text-overflow"><%= activity.description %></p>
           <p class="card-review-stars"> <%= int_to_stars(activity.average_rating, 5) %>
             <small class="card-review-total">
               <%= link_to(activity_reviews_path(activity)) do %>
@@ -30,7 +28,7 @@
             <%= link_to "Add review", new_activity_review_path(activity), class: "btn btn-primary-card", user: current_user %>
           </p>
           <div class="review-favorite-btn">
-            <p id="card-review">
+            <p id="card-review" class="card-text-overflow">
               <% unless activity.reviews.empty? %>
                 <i class="fa-solid fa-quote-left"></i> <%= rand_review.content %> <i class="fa-solid fa-quote-right"></i>
                 - <em><%= User.find(rand_review.user_id).first_name %></em>

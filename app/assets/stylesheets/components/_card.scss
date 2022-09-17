@@ -38,6 +38,12 @@
   }
 }
 
+.card-text-overflow {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
 .fa-heart {
   color: $green;
   font-size: x-large
@@ -83,7 +89,7 @@
 #card-review{
   line-height: 3;
   margin-bottom: 0;
-  font-size: 14px;
+  font-size: 10px;
 }
 
 .dog-card-favorite{
