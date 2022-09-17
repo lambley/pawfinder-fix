@@ -16,6 +16,44 @@
   }
 }
 
+.activity-card {
+  background-color: white;
+  border-radius: 8px;
+}
+
+.activity-card-image {
+  width: 100%;
+  -o-object-fit: cover;
+  object-fit: cover;
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+  object-position: center;
+  height: 100%;
+}
+
+.text-overflow-card {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: pre;
+  padding-right: 16px !important;
+}
+
+.activity-review-text {
+  font-size: small;
+}
+
+.activity-card-body {
+  padding-top: 16px;
+  h5 {
+    font-size: larger;
+    font-weight: bold;
+  }
+  p {
+    margin: 0;
+    padding: 0;
+  }
+}
+
 .card-review-stars {
   color: gold;
   small {
@@ -36,9 +74,11 @@
 }
 
 .card-favourite {
-  color: $green;
+  color: #04985A;
   font-size: x-large;
   text-align: right;
+  padding-right: 16px;
+  padding-bottom: 8px;
   i {
     border: 1px solid $green;
     border-radius: 9999999px;
