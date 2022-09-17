@@ -4,9 +4,29 @@
   background-color: #f2f2f2;
   text-align-last: center;
   padding: 4px 8px;
-  // border-radius: 99999px;
 }
 
+.new-activity-form {
+  margin-top: 260px;
+  width: 500px;
+}
+
+.new-activity-top-image {
+  height: 320px;
+  width: 100%;
+  -o-object-fit: cover;
+  object-fit: cover;
+  -o-object-position: top;
+  object-position: top;
+  margin-left: auto;
+  margin-right: auto;
+}
 .display-none {
   display: none;
+}
+
+.sticky-form-image {
+  position: fixed;
+  z-index: -99999;
+  width: 100%;
 }

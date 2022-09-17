@@ -1,4 +1,7 @@
-<div class="container devise-form-wrapper" style="width: 500px; margin-top: 160px" data-controller="new-activity">
+<div class="sticky-form-image">
+  <%= image_tag("new-activity-form/new-default.jpg", class: "new-activity-top-image") %>
+</div>
+<div class="container devise-form-wrapper new-activity-form " data-controller="new-activity">
   <div id="new-activity-selector">
     <h3>Select activity type to create</h3>
     <select name="activity" id="newActivitySelector" class="new-activity-selector" data-new-activity-target="select" data-action="change->new-activity#showForm">
