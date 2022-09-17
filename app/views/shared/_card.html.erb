@@ -1,13 +1,13 @@
 <div class="container">
-  <div class="card mb-3">
-    <div class="row g-0">
+  <div class="activity-card mb-3">
+    <div class="row">
       <div class="col-md-4">
 
-        <%= cl_image_tag(activity.cl_tag, width: 150, height: 150, class: "card-position") %>
+        <%= cl_image_tag(activity.cl_tag, class: "activity-card-image") %>
 
       </div>
       <div class="col-md-8">
-        <div class="card-body">
+        <div class="activity-card-body">
           <h5 class="card-title"><%= activity.name.capitalize %></h5>
 
           <!-- display different card info based on category -->
@@ -18,7 +18,7 @@
           <% end %>
           <!--end-->
 
-          <p class="card-text"><%= activity.description %></p>
+          <p class="card-text text-overflow-card"><%= activity.description %></p>
           <p class="card-review-stars"> <%= int_to_stars(activity.average_rating, 5) %>
             <small class="card-review-total">
               <%= link_to(activity_reviews_path(activity)) do %>
@@ -27,10 +27,10 @@
             </small>
             <%= link_to "Add review", new_activity_review_path(activity), class: "btn btn-primary-card", user: current_user %>
           </p>
-          <p>
+          <p class="text-overflow-card activity-review-text">
             <% unless activity.reviews.empty? %>
-              <i class="fa-solid fa-quote-left"></i> <%= rand_review.content %> <i class="fa-solid fa-quote-right"></i>
-              - <em><%= User.find(rand_review.user_id).first_name %></em>
+              <i class="fa-solid fa-quote-left"></i> <%= rand_review.content %> <i class="fa-solid fa-quote-right"></i> -
+              <em><%= User.find(rand_review.user_id).first_name %></em>
             <% end %>
           </p>
           <!--Display favourite heart-->
