@@ -1,15 +1,15 @@
 <div class="container">
   <div class="card mb-3">
-    <div class="row g-0">
+    <div class="row">
       <div class="col-md-4">
-        <%= cl_image_tag(dog.cl_tag, width: 150, height: 150, class: "img-fluid rounded-start") %>
+        <%= cl_image_tag(dog.cl_tag, class: "activity-card-image") %>
       </div>
       <div class="col-md-8">
-        <div class="card-body">
+        <div class="activity-card-body">
           <%= link_to dog_path(dog) do %>
             <h5 class="card-title"><%= dog.name %></h5>
           <% end %>
-          <p class="card-text"><%= dog.breed %> | <%= dog.colour %> | <%= dog.age %> years old</p>
+          <p class="card-text dog-card-subtitle"><%= dog.breed %> | <%= dog.colour %> | <%= dog.age %> years old</p>
           <p class="card-text"><%= dog.biography %></p>
           <!--Display favourite heart-->
           <div class="card-favourite" id="dog-card-favourite" data-controller="favourite">
