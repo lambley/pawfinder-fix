@@ -1,11 +1,3 @@
-<<<<<<< Updated upstream
-<%= cl_image_tag(activity.cl_tag, :format => :png, transformation:[ {width: 240, aspect_ratio: 1.5, crop: "fill"},
-{radius: "25:0:0:0"} ]) %>
-<div class="popup-info">
-<h4><%= activity.name %></h4>
-<p><%= activity.location.street %>, <%= activity.location.city %>, <%= activity.location.postcode %></p>
-</div>
-=======
 <a href="#" data-action="click->scroll#scrollIntoView" class="mapbox-textdecoration-none">
   <%= cl_image_tag(activity.cl_tag, :format => :png, transformation:[ {width: 240, aspect_ratio: 1.5, crop: "fill"},
   {radius: "25:0:0:0"} ]) %>
@@ -14,4 +6,3 @@
     <p><%= activity.location.street %>, <%= activity.location.city %>, <%= activity.location.postcode %></p>
   </div>
 </a>
->>>>>>> Stashed changes
