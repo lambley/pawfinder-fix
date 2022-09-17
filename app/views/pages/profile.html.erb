@@ -21,8 +21,8 @@
     <div class="profile-card">
       <%= cl_image_tag(current_user.cl_tag, crop: :thumb, gravity: :face, class: "profile-card-avatar") %>
       <div class="profile-card-info">
-        <h2><%= current_user.name %></h2>
-        <p><%= current_user.location.address %></p>
+        <h2><%= current_user.name %></h2><%= link_to "Edit Account", edit_user_registration_path %>
+        <p><%= current_user.location.address if current_user.location %></p>
         <small><%= current_user.biography %></small>
         <div class="button-margin-top"><%= link_to "Your reviews", profile_reviews_path, user: "yes", class: "blue-button" %></div>
       </div>
