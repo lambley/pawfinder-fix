@@ -3,8 +3,8 @@
   <!-- dropdowns-->
   <div class="search-top">
     <div class="row search-dropdown">
-      <%= form.label :feature, "Select a park feature:"%>
-      <%= form.select :feature, Activity.park_features, selected: Activity.park_features.first %>
+      <%= form.label :park_feature, "Select a park feature:"%>
+      <%= form.select :park_feature, Activity.park_features, selected: Activity.park_features.first %>
     </div>
     <div class="row search-dropdown" id="search-slider">
       <%= form.label :range, id: "search-slider-output" %>
