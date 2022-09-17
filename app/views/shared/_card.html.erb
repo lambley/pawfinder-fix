@@ -33,9 +33,9 @@
               - <em><%= User.find(rand_review.user_id).first_name %></em>
             <% end %>
           </p>
-          <%= link_to "Get Directions", activity_directions_path(activity), class: "red-button"%>
           <!--Display favourite heart-->
           <% if user_signed_in? %>
+            <%= link_to "Get Directions", activity_directions_path(activity), class: "red-button"%>
             <div class="card-favourite" id="card-favourite" data-controller="favourite">
               <% if activity.favourite.nil? %>
                 <%= link_to(activity_favourites_path(activity), data: { turbo_method: "POST" }, activity: activity.id) do %>
@@ -54,7 +54,7 @@
               <% end %>
             </div>
           <% else %>
-            <p>Sign in to <strong>add to favourites</strong></p>
+            <p>Sign in to <strong>add to favourites</strong> and <strong>get directions</strong></p>
           <% end %>
 
         </div>
