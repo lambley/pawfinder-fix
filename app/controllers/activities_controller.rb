@@ -2,12 +2,12 @@ class ActivitiesController < ApplicationController
   skip_before_action :authenticate_user!, only: :index
 
   def index
-    if user_signed_in?
+    if user_signed_in? && params[:category].present?
       # locate activities near user
       locations = Location.near(current_user.location, params[:range]).where(locatable_type: "Activity")
 
       # convert list to active relation and search by category
-      @activities = Activity.where(id: locations.map(&:id)).search_by_category(params[:category])
+      @activities = Activity.where(id: locations.map(&:locatable_id)).where(category: params[:category])
     else
       @activities = Activity.all
     end
