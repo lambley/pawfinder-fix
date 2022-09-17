@@ -1,10 +1,10 @@
-<div class="card mb-3">
+<div class="card mb-3 card-review">
   <div class="row g-0">
     <div class="col-md-4">
       <%= cl_image_tag(review.activity.cl_tag, width: 150, height: 150, class: "card-position-reviews") %>
     </div>
     <div class="col-md-8">
-      <div class="card-body">
+      <div class="card-body-reviews">
         <h3><%= review.content.capitalize %> - <em><%= User.find(review.user_id).first_name %></em></h3>
         <p><p class="card-review-stars"> <%= int_to_stars(review.rating, 5) %></p>
       </div>
