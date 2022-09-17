@@ -24,7 +24,7 @@ class ActivitiesController < ApplicationController
     # default: if search results are empty
     if @activities.empty? || @activities.nil?
       @activities = Activity.all.search_by_category(params[:category])
-      flash[:notice] = "No matches found - showing all activities"
+      flash[:notice] = "No matches found - showing all #{params[:category].pluralize}"
     end
 
     # map markers
