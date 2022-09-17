@@ -22,5 +22,8 @@ application.register("map", MapController)
 import NewActivityController from "./new_activity_controller"
 application.register("new-activity", NewActivityController)
 
+import ScrollController from "./scroll_controller"
+application.register("scroll", ScrollController)
+
 import StarRatingController from "./star_rating_controller"
 application.register("star-rating", StarRatingController)
