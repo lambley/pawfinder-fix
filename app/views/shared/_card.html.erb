@@ -3,8 +3,8 @@
     <div class="row g-0">
       <div class="col-md-4">
 
-        <%= cl_image_tag(activity.cl_tag, :format => :png, class: "card-img", transformation:[ {width: 245, height: 200, crop: "crop", gravity:"auto", quality: "auto"},
-{radius: "20:0:0:20"} ] ) %>
+        <%= cl_image_tag(activity.cl_tag, :format => :png, class: "card-img", transformation:[ {width: 245, height: 200, crop: "fill"},
+        {radius: "15:0:0:15"} ] ) %>
 
       </div>
       <div class="col-md-8">
