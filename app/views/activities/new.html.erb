@@ -25,6 +25,10 @@
         <%= i.input :city %>
         <%= i.input :postcode %>
       <% end %>
+       <%# Put actual Cl_tag path below for desired image to "upload" %>
+       <%= f.hidden_field :cl_tag, value: "PawFinder/Activities/activity_45.jpg" %>
+      <%# :free is a fill-in just for presentation of upload form %>
+      <%= f.input :free, as: :file %>
       <%= f.hidden_field :category, value: "restaurant" %>
       <%= f.button :submit, class: "devise-form-button" %>
     <% end %>
@@ -43,6 +47,10 @@
         <%= i.input :city %>
         <%= i.input :postcode %>
       <% end %>
+      <%# Put actual Cl_tag path below for desired image to "upload" %>
+       <%= f.hidden_field :cl_tag, value: "PawFinder/Activities/activity_37.jpg" %>
+      <%# :free is a fill-in just for presentation of upload form %>
+      <%= f.input :free, as: :file %>
       <%= f.hidden_field :category, value: "park" %>
       <%= f.button :submit, class: "devise-form-button" %>
     <% end %>
@@ -60,6 +68,10 @@
         <%= i.input :city %>
         <%= i.input :postcode %>
       <% end %>
+      <%# Put actual Cl_tag path below for desired image to "upload" %>
+       <%= f.hidden_field :cl_tag, value: "PawFinder/Activities/activity_18.jpg" %>
+      <%# :free is a fill-in just for presentation of upload form %>
+      <%= f.input :free, as: :file %>
       <%= f.hidden_field :category, value: "dog bin" %>
       <%= f.button :submit, class: "devise-form-button" %>
     <% end %>
