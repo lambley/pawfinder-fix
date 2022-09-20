@@ -42,6 +42,7 @@
         <%= i.input :street %>
         <%= i.input :city %>
         <%= i.input :postcode %>
+        <%= f.input :photo, as: :file %>
       <% end %>
       <%= f.hidden_field :category, value: "park" %>
       <%= f.button :submit, class: "devise-form-button" %>
