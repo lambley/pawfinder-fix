@@ -1,4 +1,5 @@
 <div class="dog-main">
+<a href="javascript:history.back()" class="arrow-left"></a>
   <div class="dog-top-profile">
     <%= cl_image_tag(@dog.cl_tag, {class: 'dog-avatar'}) %>
     <%= link_to dog_owner_path(@dog), user: @dog.user do %>

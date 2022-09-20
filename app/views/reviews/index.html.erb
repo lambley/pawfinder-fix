@@ -1,6 +1,7 @@
 <div class="review-index-container">
-  <h1>Reviews for <em><%= @activity.name.capitalize %></em></h1>
-  <% @reviews.each do |review| %>
-    <%= render "shared/review_card", review: review %>
-  <% end %>
+  <a href="javascript:history.back()" class="arrow-left"></a>
+    <h1>Reviews for <em><%= @activity.name.capitalize %></em></h1>
+    <% @reviews.each do |review| %>
+      <%= render "shared/review_card", review: review %>
+    <% end %>
 </div>

@@ -2,7 +2,7 @@
 
   <div class="profile-column pt-3">
 
-    <div class="profile-card profile-favourites">
+ <div class="profile-card profile-favourites">
       <h2><%= current_user.first_name.capitalize %>'s Favourites</h2>
       <div class="profile-favourites-cards">
         <% current_user.favourites.sort.reverse.each do |favourite| %>

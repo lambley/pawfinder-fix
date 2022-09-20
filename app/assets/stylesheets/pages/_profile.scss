@@ -62,3 +62,14 @@
     box-shadow: 1px 1px 4px 1px #80808038;
   }
 }
+
+.arrow-left {
+  border: solid #777777;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+  transform: rotate(135deg);
+  -webkit-transform: rotate(135deg);
+  margin-top: 15px;
+  margin-left: -1450px;
+}
