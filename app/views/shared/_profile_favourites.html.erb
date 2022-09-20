@@ -22,20 +22,18 @@
       </small>
       <%= link_to "Add review", new_activity_review_path(activity), class: "btn btn-primary-card", user: current_user %>
     </p>
-      <div class="card-favourite" id="profile-card-favourite" data-controller="favourite">
-        <% if activity.favourite.nil? %>
-          <%= link_to(activity_favourites_path(activity), data: { turbo_method: "POST" }, activity: activity.id) do %>
-            <i class="fa-regular fa-heart" data-action="click->favourite#addToFavourites" data-favourite-target="heart"></i>
-          <% end %>
-        <% else %>
-        <% if current_user.favourites.ids.include?(activity.favourite.id) %>
-          <%= link_to(activity_favourite_path(id: Favourite.where(user_id: current_user.id, favouritable_id: activity.id).first.id, activity_id: activity), data: { turbo_method: "DELETE" }, activity: activity.id) do %>
-            <i class="fa-solid fa-heart" data-action="click->favourite#addToFavourites" data-favourite-target="heart"></i>
-          <% end %>
-        <% else %>
-          <%= link_to(activity_favourites_path(activity), data: { turbo_method: "POST" }, activity: activity.id) do %>
-            <i class="fa-regular fa-heart" data-action="click->favourite#addToFavourites" data-favourite-target="heart"></i>
-          <% end %>
+    <div class="card-favourite" id="profile-card-favourite" data-controller="favourite">
+      <% if activity.favourite.nil? %>
+        <%= link_to(activity_favourites_path(activity), data: { turbo_method: "POST" }, activity: activity.id) do %>
+          <i class="fa-regular fa-heart" data-action="click->favourite#addToFavourites" data-favourite-target="heart"></i>
+        <% end %>
+      <% elsif current_user.favourites.ids.include?(activity.favourite.id) %>
+        <%= link_to(activity_favourite_path(id: Favourite.where(user_id: current_user.id, favouritable_id: activity.id).first.id, activity_id: activity), data: { turbo_method: "DELETE" }, activity: activity.id) do %>
+          <i class="fa-solid fa-heart" data-action="click->favourite#addToFavourites" data-favourite-target="heart"></i>
+        <% end %>
+      <% else %>
+        <%= link_to(activity_favourites_path(activity), data: { turbo_method: "POST" }, activity: activity.id) do %>
+          <i class="fa-regular fa-heart" data-action="click->favourite#addToFavourites" data-favourite-target="heart"></i>
         <% end %>
       <% end %>
     </div>
