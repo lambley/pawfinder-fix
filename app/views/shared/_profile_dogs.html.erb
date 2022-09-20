@@ -3,11 +3,12 @@
     <%= cl_image_tag(dog.cl_tag, width: 150, height: 150) %>
   </div>
   <div class="profile-dogs-card-info">
-    <%= link_to dog_path(dog) do %>
+    <%= link_to dog_path(dog), class: "dog-name-style" do %>
       <h5><%= dog.name %></h5>
     <% end %>
-    <p><%= dog.name %></p>
+    <p><%= dog.breed %> | <%= dog.colour %> | <%= dog.age %> years old </p>
     <p><%= dog.biography %></p>
+    <p></p>
   </div>
   </div>
 </div>

@@ -54,10 +54,9 @@ class ActivitiesController < ApplicationController
     postcode = params[:location][:postcode]
     if @activity.save!
       Location.create!(street:, city:, postcode:, locatable_id: @activity.id, locatable_type: "Activity")
-      flash.now[:notice] = "Created #{@activity.name.capitalize} sucessfully!"
-      redirect_to activities_path, status: :see_other
+      redirect_to activities_path, notice: "Created #{@activity.name.capitalize} sucessfully!"
     else
-      flash.now[:alert] = "Failed to create activity"
+      flash[:alert] = "Failed to create activity"
       render :new
     end
   end
@@ -77,6 +76,6 @@ class ActivitiesController < ApplicationController
   end
 
   def activity_params
-    params.require(:activity).permit(:name, :description, :category, :restaurant_type, :park_feature)
+    params.require(:activity).permit(:name, :description, :category, :restaurant_type, :park_feature, :cl_tag, :photo)
   end
 end
