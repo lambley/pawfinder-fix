@@ -1,6 +1,7 @@
 <div class="container">
-  <h1 class="profile-review-header">Reviews by <em><%= @user.name.capitalize %></em></h1>
-  <% @reviews.each do |review| %>
-    <%= render "shared/review_card", review: review %>
-  <% end %>
+  <a href="javascript:history.back()" class="arrow"></a>
+    <h1 class="profile-review-header">Reviews by <em><%= @user.name.capitalize %></em></h1>
+    <% @reviews.each do |review| %>
+      <%= render "shared/review_card", review: review %>
+    <% end %>
 </div>
