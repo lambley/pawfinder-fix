@@ -1,9 +1,10 @@
 <div class="devise-form-wrapper">
   <div class="row">
+    <h2>Review for <em><%= @activity.name %></em></h2>
     <div class="col-xs-4">
       <%= simple_form_for [@activity, @review], url: :activity_reviews  do |f| %>
       <%= f.error_notification %>
-          <%= f.input :content, error: "Miniimum 6 characters" %>
+          <%= f.input :content, error: "Minimum 6 characters" %>
           <%= f.input :rating, collection: (0..5).to_a, label: "Rate your experience", input_html: {data: {controller: "star-rating"}} %>
           <div class="devise-form-button-wrapper">
             <%= f.button :submit, "Send your review", class: "devise-form-button" %>
