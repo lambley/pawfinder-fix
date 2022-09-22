@@ -1,12 +1,12 @@
 <div class="container" id="activity-<%= activity.id %>">
   <div class="activity-card mb-3">
     <div class="row">
-      <div class="col-md-4">
+      <div class="activity-card-image-column">
 
         <%= cl_image_tag(activity.cl_tag, class: "activity-card-image", crop: :fill) %>
 
       </div>
-      <div class="col-md-8">
+      <div class="activity-card-info-column">
         <div class="activity-card-body">
           <h5 class="card-title"><%= activity.name.capitalize %></h5>
 
