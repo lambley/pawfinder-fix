@@ -40,6 +40,8 @@ class ActivitiesController < ApplicationController
         lng: 0
       }
     end
+
+    @activities = @activities.order(created_at: :desc)
   end
 
   def new
