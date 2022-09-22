@@ -20,6 +20,13 @@
   > h2 {
     padding: 16px;
   }
+  img {
+    border-bottom-left-radius: 8px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    padding: 0;
+  }
 }
 
 .profile-card-info {
@@ -28,10 +35,10 @@
 
 .profile-card-avatar {
   width: 25%;
-  border-radius: 4px;
   object-fit: cover;
   padding: 16px;
   height: fit-content;
+  border-radius: 4px;
 }
 
 .profile-favourites {
